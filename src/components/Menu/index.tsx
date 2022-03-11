@@ -7,19 +7,7 @@ import { useActiveLocale } from 'hooks/useActiveLocale'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useLocationLinkProps } from 'hooks/useLocationLinkProps'
 import React, { useEffect, useRef, useState } from 'react'
-import {
-  BookOpen,
-  Check,
-  ChevronLeft,
-  Coffee,
-  FileText,
-  Globe,
-  HelpCircle,
-  Info,
-  MessageCircle,
-  Moon,
-  Sun,
-} from 'react-feather'
+import { Check, ChevronLeft, Globe } from 'react-feather'
 import { Link } from 'react-router-dom'
 import { useDarkModeManager } from 'state/user/hooks'
 import styled, { css } from 'styled-components/macro'
@@ -242,7 +230,7 @@ export default function Menu() {
               default:
                 return (
                   <MenuFlyout>
-                    <MenuItem href="https://uniswap.org/">
+                    {/* <MenuItem href="https://uniswap.org/">
                       <div>
                         <Trans>About</Trans>
                       </div>
@@ -265,14 +253,14 @@ export default function Menu() {
                         <Trans>Discord</Trans>
                       </div>
                       <MessageCircle opacity={0.6} size={16} />
-                    </MenuItem>
+                    </MenuItem> */}
                     <ToggleMenuItem onClick={() => setMenu('lang')}>
                       <div>
                         <Trans>Language</Trans>
                       </div>
                       <Globe opacity={0.6} size={16} />
                     </ToggleMenuItem>
-                    <ToggleMenuItem onClick={() => toggleDarkMode()}>
+                    {/* <ToggleMenuItem onClick={() => toggleDarkMode()}>
                       <div>{darkMode ? <Trans>Light Theme</Trans> : <Trans>Dark Theme</Trans>}</div>
                       {darkMode ? <Moon opacity={0.6} size={16} /> : <Sun opacity={0.6} size={16} />}
                     </ToggleMenuItem>
@@ -298,7 +286,7 @@ export default function Menu() {
                       >
                         <Trans>Claim UNI</Trans>
                       </UNIbutton>
-                    )}
+                    )} */}
                   </MenuFlyout>
                 )
             }

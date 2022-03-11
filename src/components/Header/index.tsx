@@ -98,7 +98,7 @@ const HeaderLinks = styled(Row)`
   overflow: auto;
   align-items: center;
   ${({ theme }) => theme.mediaWidth.upToLarge`
-    justify-self: start;  
+    justify-self: start;
     `};
   ${({ theme }) => theme.mediaWidth.upToMedium`
     justify-self: center;
@@ -282,7 +282,7 @@ export default function Header() {
         </StyledNavLink>
         <StyledNavLink
           id={`pool-nav-link`}
-          to={'/pool'}
+          to={'/pool/v2'}
           isActive={(match, { pathname }) =>
             Boolean(match) ||
             pathname.startsWith('/add') ||
@@ -293,15 +293,15 @@ export default function Header() {
         >
           <Trans>Pool</Trans>
         </StyledNavLink>
-        {(!chainId || chainId === SupportedChainId.MAINNET) && (
+        {/* {(!chainId || chainId === SupportedChainId.MAINNET) && (
           <StyledNavLink id={`vote-nav-link`} to={'/vote'}>
             <Trans>Vote</Trans>
           </StyledNavLink>
-        )}
-        <StyledExternalLink id={`charts-nav-link`} href={infoLink}>
+        )} */}
+        {/* <StyledExternalLink id={`charts-nav-link`} href={infoLink}>
           <Trans>Charts</Trans>
           <sup>↗</sup>
-        </StyledExternalLink>
+        </StyledExternalLink> */}
       </HeaderLinks>
 
       <HeaderControls>
