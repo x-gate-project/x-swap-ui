@@ -256,7 +256,7 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
   ),
   [SupportedChainId.GU_SANDBOX]: new Token(
     SupportedChainId.GU_SANDBOX,
-    '0xaa2b7BbEF0D8331b6bfE6ffa770c510F54AA95E5',
+    '0x46b5efc844C3c825339A76f0f5EfD7D461123E84',
     18,
     'WETH',
     'Wrapped Ether'

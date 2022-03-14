@@ -16,16 +16,16 @@ export const MULTICALL_ADDRESS: AddressMap = {
   ]),
   [SupportedChainId.ARBITRUM_ONE]: '0xadF885960B47eA2CD9B55E6DAc6B42b7Cb2806dB',
   [SupportedChainId.ARBITRUM_RINKEBY]: '0xa501c031958F579dB7676fF1CE78AD305794d579',
-  [SupportedChainId.GU_SANDBOX]: '0x6fBaF25cEC54E1363BD980cF3a632A5ae15f75bb',
+  [SupportedChainId.GU_SANDBOX]: '0x1aAE631f5669D11162239a767892270edc7cb0cd',
 }
 export const V2_FACTORY_ADDRESSES: AddressMap = {
   ...constructSameAddressMap(V2_FACTORY_ADDRESS),
-  [SupportedChainId.GU_SANDBOX]: '0xdD948a3ad5E2BC8CB580e2943b04Fe7C7948E11F',
+  [SupportedChainId.GU_SANDBOX]: '0xe11890E26A5035E6a72d249bB7D24deC14b1cD34',
 }
 
 export const V2_ROUTER_ADDRESS: AddressMap = {
   ...constructSameAddressMap('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'),
-  [SupportedChainId.GU_SANDBOX]: '0x0108A65Df3422f47E8717a23A3B83dD06a6d532C',
+  [SupportedChainId.GU_SANDBOX]: '0x0018425dFfBfccaB2676513dB72aB3686ac2a19e',
 }
 export const V3_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0xE592427A0AEce92De3Edee1F18E0157C05861564', [
   SupportedChainId.OPTIMISM,

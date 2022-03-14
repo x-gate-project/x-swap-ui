@@ -5000,6 +5000,16 @@
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
 
+"@uniswap/v2-sdk@https://github.com/gulabs/v2-sdk.git#feat/update-contract-address":
+  version "3.0.1"
+  resolved "https://github.com/gulabs/v2-sdk.git#cd2d913e26e9e1a1c6ab1f39cb96a1aba4190350"
+  dependencies:
+    "@ethersproject/address" "^5.0.0"
+    "@ethersproject/solidity" "^5.0.0"
+    "@uniswap/sdk-core" "^3.0.0-alpha.3"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+
 "@uniswap/v3-core@1.0.0":
   version "1.0.0"
   resolved "https://registry.npmjs.org/@uniswap/v3-core/-/v3-core-1.0.0.tgz"
