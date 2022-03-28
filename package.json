@@ -1,6 +1,6 @@
 {
-  "name": "@uniswap/interface",
-  "description": "Uniswap Interface",
+  "name": "@gulabs/interface",
+  "description": "GUSwap Interface",
   "homepage": ".",
   "private": true,
   "devDependencies": {
