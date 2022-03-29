@@ -31,7 +31,10 @@ export function getEtherscanLink(
   data: string,
   type: 'transaction' | 'token' | 'address' | 'block'
 ): string {
-  const prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}etherscan.io`
+  let prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}etherscan.io`
+  if (chainId === ChainId.GU_SANDBOX) {
+    prefix = 'https://b32b3f3b-c059-47f5-b171-1a3c952f61b7.4z9mdn90pg6rby7s7iqv9kjgg.ep.bccloud.net'
+  }
 
   switch (type) {
     case 'transaction': {

@@ -18,7 +18,6 @@ import { TYPE, ExternalLink } from '../../theme'
 
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
-import Menu from '../Menu'
 
 import Row, { RowFixed } from '../Row'
 import Web3Status from '../Web3Status'
@@ -258,7 +257,8 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
   [ChainId.RINKEBY]: 'Rinkeby',
   [ChainId.ROPSTEN]: 'Ropsten',
   [ChainId.GÖRLI]: 'Görli',
-  [ChainId.KOVAN]: 'Kovan'
+  [ChainId.KOVAN]: 'Kovan',
+  [ChainId.GU_SANDBOX]: 'G.U.Sandbox'
 }
 
 export default function Header() {
@@ -311,13 +311,7 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledNavLink id={`stake-nav-link`} to={'/uni'}>
-            UNI
-          </StyledNavLink>
-          <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
-            Vote
-          </StyledNavLink>
-          <StyledExternalLink id={`stake-nav-link`} href={'https://uniswap.info'}>
+          <StyledExternalLink id={`stake-nav-link`} href={'#'}>
             Charts <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
         </HeaderLinks>
@@ -376,7 +370,6 @@ export default function Header() {
         </HeaderElement>
         <HeaderElementWrap>
           <Settings />
-          <Menu />
         </HeaderElementWrap>
       </HeaderControls>
     </HeaderFrame>
