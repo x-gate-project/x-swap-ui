@@ -1635,6 +1635,31 @@
     "@ethersproject/properties" "^5.0.0"
     "@ethersproject/strings" "^5.0.0"
 
+"@gulabs/sdk@https://github.com/gulabs/v2-sdk":
+  version "0.0.1"
+  resolved "https://github.com/gulabs/v2-sdk#e079f2bab1d3e3e4f5f4ddaedd83b09818064812"
+  dependencies:
+    "@gulabs/v2-core" "https://github.com/gulabs/v2-core.git"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.1"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+    toformat "^2.0.0"
+
+"@gulabs/v2-core@https://github.com/gulabs/v2-core.git":
+  version "1.0.1"
+  resolved "https://github.com/gulabs/v2-core.git#1537dc7f61b96082e251876fc439e912ae620d9f"
+  dependencies:
+    scrypt "^6.0.3"
+
+"@gulabs/v2-periphery@https://github.com/gulabs/v2-periphery":
+  version "1.1.0-beta.0"
+  resolved "https://github.com/gulabs/v2-periphery#bdf2e7aed930881cf3711f029ec4eb4116b23ef3"
+  dependencies:
+    "@gulabs/v2-core" "https://github.com/gulabs/v2-core.git"
+    "@uniswap/lib" "4.0.1-alpha"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -2691,45 +2716,15 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@uniswap/lib@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@uniswap/lib/-/lib-1.1.1.tgz#0afd29601846c16e5d082866cbb24a9e0758e6bc"
-  integrity sha512-2yK7sLpKIT91TiS5sewHtOa7YuM8IuBXVl4GZv2jZFys4D2sY7K5vZh6MqD25TPA95Od+0YzCVq6cTF2IKrOmg==
-
-"@gulabs/sdk@https://github.com/gulabs/v2-sdk":
-  version "0.0.1"
-  resolved "https://github.com/gulabs/v2-sdk#f83800f683e7bebcb0dc48652b4765c8bcd96d5c"
-  dependencies:
-    "@uniswap/v2-core" "^1.0.0"
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
+"@uniswap/lib@4.0.1-alpha":
+  version "4.0.1-alpha"
+  resolved "https://registry.yarnpkg.com/@uniswap/lib/-/lib-4.0.1-alpha.tgz#2881008e55f075344675b3bca93f020b028fbd02"
+  integrity sha512-f6UIliwBbRsgVLxIaBANF6w09tYqc6Y/qXdsrbEmXHyFA7ILiKrIwRFXe1yOg8M3cksgVsO9N7yuL2DdCGQKBA==
 
 "@uniswap/token-lists@^1.0.0-beta.18":
   version "1.0.0-beta.18"
   resolved "https://registry.yarnpkg.com/@uniswap/token-lists/-/token-lists-1.0.0-beta.18.tgz#b6c70b67fa9ee142e6df088e40490ec3a545e7ba"
   integrity sha512-RuDY36JUc2+Id2Dlpnt+coFfUEf9WkfvR0a3LKvwVgzAfcrd5KvjZg+PhAr4bczFU1aq7rs3/QLgwpsnFYaiPw==
-
-"@uniswap/v2-core@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@uniswap/v2-core/-/v2-core-1.0.0.tgz#e0fab91a7d53e8cafb5326ae4ca18351116b0844"
-  integrity sha512-BJiXrBGnN8mti7saW49MXwxDBRFiWemGetE58q8zgfnPPzQKq55ADltEILqOt6VFZ22kVeVKbF8gVd8aY3l7pA==
-
-"@uniswap/v2-core@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@uniswap/v2-core/-/v2-core-1.0.1.tgz#af8f508bf183204779938969e2e54043e147d425"
-  integrity sha512-MtybtkUPSyysqLY2U210NBDeCHX+ltHt3oADGdjqoThZaFRDKwM6k1Nb3F0A3hk5hwuQvytFWhrWHOEq6nVJ8Q==
-
-"@uniswap/v2-periphery@^1.1.0-beta.0":
-  version "1.1.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@uniswap/v2-periphery/-/v2-periphery-1.1.0-beta.0.tgz#20a4ccfca22f1a45402303aedb5717b6918ebe6d"
-  integrity sha512-6dkwAMKza8nzqYiXEr2D86dgW3TTavUvCR0w2Tu33bAbM8Ah43LKAzH7oKKPRT5VJQaMi1jtkGs1E8JPor1n5g==
-  dependencies:
-    "@uniswap/lib" "1.1.1"
-    "@uniswap/v2-core" "1.0.0"
 
 "@walletconnect/client@^1.1.1-alpha.0":
   version "1.1.1-alpha.0"
@@ -10625,6 +10620,11 @@ nan@2.13.2:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.13.2.tgz#f51dc7ae66ba7d5d55e1e6d4d8092e802c9aefe7"
   integrity sha512-TghvYc72wlMGMVMluVo9WRJc0mB8KxxF/gZ4YYFy7V2ZQX9l7rgbPg7vjS9mt6U5HXODVFVI2bOduCzwOMv/lw==
 
+nan@^2.0.8:
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.15.0.tgz#3f34a473ff18e15c1b5626b62903b5ad6e665fee"
+  integrity sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==
+
 nan@^2.12.1, nan@^2.14.0, nan@^2.2.1:
   version "2.14.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.1.tgz#d7be34dfa3105b91494c3147089315eff8874b01"
@@ -13600,6 +13600,13 @@ scrypt-js@3.0.1, scrypt-js@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/scrypt-js/-/scrypt-js-3.0.1.tgz#d314a57c2aef69d1ad98a138a21fe9eafa9ee312"
   integrity sha512-cdwTTnqPu0Hyvf5in5asVdZocVDTNRmR7XEcJuIzMjJeSHybHl7vpB66AzwTaIg6CLSbtjcxc8fqcySfnTkccA==
+
+scrypt@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/scrypt/-/scrypt-6.0.3.tgz#04e014a5682b53fa50c2d5cce167d719c06d870d"
+  integrity sha1-BOAUpWgrU/pQwtXM4WfXGcBthw0=
+  dependencies:
+    nan "^2.0.8"
 
 secp256k1@3.8.0, secp256k1@^3.0.1:
   version "3.8.0"
