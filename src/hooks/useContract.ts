@@ -1,12 +1,7 @@
 import { Contract } from '@ethersproject/contracts'
-import { abi as GOVERNANCE_ABI } from '@uniswap/governance/build/GovernorAlpha.json'
-import { abi as UNI_ABI } from '@uniswap/governance/build/Uni.json'
-import { abi as STAKING_REWARDS_ABI } from '@uniswap/liquidity-staker/build/StakingRewards.json'
-import { abi as MERKLE_DISTRIBUTOR_ABI } from '@uniswap/merkle-distributor/build/MerkleDistributor.json'
-import { ChainId, WETH } from '@uniswap/sdk'
-import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.json'
+import { ChainId, WETH } from '@gulabs/sdk'
+import { abi as IUniswapV2PairABI } from '@gulabs/v2-core/build/IUniswapV2Pair.json'
 import { useMemo } from 'react'
-import { GOVERNANCE_ADDRESS, MERKLE_DISTRIBUTOR_ADDRESS, UNI } from '../constants'
 import {
   ARGENT_WALLET_DETECTOR_ABI,
   ARGENT_WALLET_DETECTOR_MAINNET_ADDRESS
@@ -100,24 +95,6 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 export function useMulticallContract(): Contract | null {
   const { chainId } = useActiveWeb3React()
   return useContract(chainId && MULTICALL_NETWORKS[chainId], MULTICALL_ABI, false)
-}
-
-export function useMerkleDistributorContract(): Contract | null {
-  const { chainId } = useActiveWeb3React()
-  return useContract(chainId ? MERKLE_DISTRIBUTOR_ADDRESS[chainId] : undefined, MERKLE_DISTRIBUTOR_ABI, true)
-}
-
-export function useGovernanceContract(): Contract | null {
-  return useContract(GOVERNANCE_ADDRESS, GOVERNANCE_ABI, true)
-}
-
-export function useUniContract(): Contract | null {
-  const { chainId } = useActiveWeb3React()
-  return useContract(chainId ? UNI[chainId].address : undefined, UNI_ABI, true)
-}
-
-export function useStakingContract(stakingAddress?: string, withSignerIfPossible?: boolean): Contract | null {
-  return useContract(stakingAddress, STAKING_REWARDS_ABI, withSignerIfPossible)
 }
 
 export function useSocksController(): Contract | null {

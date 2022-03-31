@@ -1,4 +1,4 @@
-import { JSBI, Pair, Percent, TokenAmount } from '@uniswap/sdk'
+import { JSBI, Pair, Percent, TokenAmount } from '@gulabs/sdk'
 import { darken } from 'polished'
 import React, { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'react-feather'
@@ -14,7 +14,6 @@ import { currencyId } from '../../utils/currencyId'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
 import { ButtonPrimary, ButtonSecondary, ButtonEmpty, ButtonUNIGradient } from '../Button'
 import { transparentize } from 'polished'
-import { CardNoise } from '../earn/styled'
 
 import { useColor } from '../../hooks/useColor'
 
@@ -194,7 +193,6 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
 
   return (
     <StyledPositionCard border={border} bgColor={backgroundColor}>
-      <CardNoise />
       <AutoColumn gap="12px">
         <FixedHeightRow>
           <AutoRow gap="8px">
@@ -306,7 +304,8 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
             <ButtonSecondary padding="8px" borderRadius="8px">
               <ExternalLink
                 style={{ width: '100%', textAlign: 'center' }}
-                href={`https://uniswap.info/account/${account}`}
+                // href={`https://uniswap.info/account/${account}`}
+                href="#"
               >
                 View accrued fees and analytics<span style={{ fontSize: '11px' }}>↗</span>
               </ExternalLink>
