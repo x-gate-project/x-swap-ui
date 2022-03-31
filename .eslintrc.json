@@ -8,6 +8,9 @@
       "jsx": true
     }
   },
+  "plugins": [
+    "prettier"
+  ],
   "ignorePatterns": [
     "node_modules/**/*"
   ],

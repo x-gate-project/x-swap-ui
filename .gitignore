@@ -25,7 +25,7 @@ yarn-error.log*
 notes.txt
 .idea/
 
-.vscode/
+# .vscode/
 
 cypress/videos
 cypress/screenshots
