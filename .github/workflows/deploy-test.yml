@@ -3,6 +3,9 @@ on:
   push:
     branches: [ 'main' ]
 
+env:
+  PROJECT_ID: 'gu-swap'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -45,10 +48,15 @@ jobs:
     - name: Use cloud-sdk
       uses: docker://google/cloud-sdk:273.0.0
 
+    - name: GCloud Auth
+      uses: 'google-github-actions/auth@v0'
+      with:
+        credentials_json: '${{ secrets.GCLOUD_SERVICE_KEY }}'
+
     - name: Deploy an App Engine app
       id: deploy-app
       uses: google-github-actions/deploy-appengine@v0.3.1
       with:
-        project_id: gu-swap
         deliverables: app.yaml
-        credentials: ${{ secrets.GCLOUD_SERVICE_KEY }}
+        promote: false
+        version: 'v1'
