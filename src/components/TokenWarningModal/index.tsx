@@ -1,4 +1,4 @@
-import { Token } from '@gulabs/sdk'
+import { Token } from '@gulabs/guswap-sdk'
 import { transparentize } from 'polished'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'

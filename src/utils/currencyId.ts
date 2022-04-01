@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@gulabs/sdk'
+import { Currency, ETHER, Token } from '@gulabs/guswap-sdk'
 
 export function currencyId(currency: Currency): string {
   if (currency === ETHER) return 'ETH'

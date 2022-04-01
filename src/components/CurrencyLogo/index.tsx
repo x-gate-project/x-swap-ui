@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@gulabs/sdk'
+import { Currency, ETHER, Token } from '@gulabs/guswap-sdk'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 

@@ -1,4 +1,4 @@
-import { Currency, Percent, Price } from '@gulabs/sdk'
+import { Currency, Percent, Price } from '@gulabs/guswap-sdk'
 import React, { useContext } from 'react'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'

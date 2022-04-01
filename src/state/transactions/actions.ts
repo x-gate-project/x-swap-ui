@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { ChainId } from '@gulabs/sdk'
+import { ChainId } from '@gulabs/guswap-sdk'
 
 export interface SerializableTransactionReceipt {
   to: string

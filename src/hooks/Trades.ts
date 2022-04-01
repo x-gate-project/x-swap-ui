@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Pair, Token, Trade } from '@gulabs/sdk'
+import { Currency, CurrencyAmount, Pair, Token, Trade } from '@gulabs/guswap-sdk'
 import flatMap from 'lodash.flatmap'
 import { useMemo } from 'react'
 

@@ -1,4 +1,4 @@
-import { ChainId } from '@gulabs/sdk'
+import { ChainId } from '@gulabs/guswap-sdk'
 import React from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'

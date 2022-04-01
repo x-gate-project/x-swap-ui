@@ -1,4 +1,4 @@
-import { ChainId } from '@gulabs/sdk'
+import { ChainId } from '@gulabs/guswap-sdk'
 import { createStore, Store } from 'redux'
 import { addTransaction, checkedTransaction, clearAllTransactions, finalizeTransaction } from './actions'
 import reducer, { initialState, TransactionState } from './reducer'

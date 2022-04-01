@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Percent, Token, WETH } from '@gulabs/sdk'
+import { ChainId, JSBI, Percent, Token, WETH } from '@gulabs/guswap-sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
