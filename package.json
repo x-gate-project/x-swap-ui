@@ -8,7 +8,7 @@
     "@ethersproject/experimental": "^5.0.1",
     "@gulabs/guswap-core": "https://github.com/gulabs/guswap-core.git#v0.0.1",
     "@gulabs/guswap-periphery": "https://github.com/gulabs/guswap-periphery.git#v0.0.1",
-    "@gulabs/guswap-sdk": "https://github.com/gulabs/guswap-sdk.git#v0.0.1",
+    "@gulabs/guswap-sdk": "https://github.com/gulabs/guswap-sdk.git#main",
     "@popperjs/core": "^2.4.4",
     "@reach/dialog": "^0.10.3",
     "@reach/portal": "^0.10.3",

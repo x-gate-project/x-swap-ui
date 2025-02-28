@@ -23,7 +23,7 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   4: 'rinkeby.',
   5: 'goerli.',
   42: 'kovan.',
-  99999: 'gusandbox.'
+  10081: 'gusandbox.'
 }
 
 export function getEtherscanLink(
@@ -32,8 +32,8 @@ export function getEtherscanLink(
   type: 'transaction' | 'token' | 'address' | 'block'
 ): string {
   let prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}etherscan.io`
-  if (chainId === ChainId.GU_SANDBOX) {
-    prefix = 'https://b32b3f3b-c059-47f5-b171-1a3c952f61b7.4z9mdn90pg6rby7s7iqv9kjgg.ep.bccloud.net'
+  if (chainId === ChainId.JAPAN_OPEN_CHAIN_TESTNET) {
+    prefix = 'https://explorer.testnet.japanopenchain.org'
   }
 
   switch (type) {

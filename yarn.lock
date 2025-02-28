@@ -1648,9 +1648,9 @@
     "@gulabs/guswap-core" "https://github.com/gulabs/guswap-core.git#v0.0.1"
     "@uniswap/lib" "4.0.1-alpha"
 
-"@gulabs/guswap-sdk@https://github.com/gulabs/guswap-sdk.git#v0.0.1":
+"@gulabs/guswap-sdk@https://github.com/gulabs/guswap-sdk.git#main":
   version "0.0.1"
-  resolved "https://github.com/gulabs/guswap-sdk.git#032f39865c570b3e017cc41adce082fe400aa326"
+  resolved "https://github.com/gulabs/guswap-sdk.git#5d4975786e4e5ece0aa646fcf0634fe9f325900b"
   dependencies:
     "@gulabs/guswap-core" "https://github.com/gulabs/guswap-core.git#v0.0.1"
     big.js "^5.2.2"

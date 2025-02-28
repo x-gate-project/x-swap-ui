@@ -226,7 +226,7 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
   [ChainId.ROPSTEN]: 'Ropsten',
   [ChainId.GÖRLI]: 'Görli',
   [ChainId.KOVAN]: 'Kovan',
-  [ChainId.GU_SANDBOX]: 'G.U.Sandbox'
+  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: 'Japan Open Chain Testnet'
 }
 
 export default function Header() {
