@@ -4,6 +4,9 @@
   "description": "GUSwap Interface",
   "homepage": ".",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "devDependencies": {
     "@ethersproject/experimental": "^5.0.1",
     "@gulabs/guswap-core": "https://github.com/gulabs/guswap-core.git#v0.0.1",
