@@ -124,6 +124,7 @@ const HideSmall = styled.span`
 const NetworkCard = styled(YellowCard)`
   border-radius: 12px;
   padding: 8px 12px;
+  white-space: nowrap;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     margin: 0;
     margin-right: 0.5rem;
@@ -234,16 +235,16 @@ export default function Header() {
   const { t } = useTranslation()
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
-  const [isDark] = useDarkModeManager()
+  // const [isDark] = useDarkModeManager()
 
   return (
     <HeaderFrame>
       <HeaderRow>
-        <Title href=".">
+        {/* <Title href=".">
           <UniIcon>
             <img width={'24px'} src={isDark ? LogoDark : Logo} alt="logo" />
           </UniIcon>
-        </Title>
+        </Title> */}
         <HeaderLinks>
           <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
             {t('swap')}
@@ -261,9 +262,9 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledExternalLink id={`stake-nav-link`} href={'#'}>
+          {/* <StyledExternalLink id={`stake-nav-link`} href={'#'}>
             Charts <span style={{ fontSize: '11px' }}>↗</span>
-          </StyledExternalLink>
+          </StyledExternalLink> */}
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
