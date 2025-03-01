@@ -1,4 +1,4 @@
-import { ChainId, Pair, Token } from '@gulabs/guswap-sdk'
+import { ChainId, Pair, Token } from '@x-gate-project/x-swap-sdk'
 import flatMap from 'lodash.flatmap'
 import { useCallback, useMemo } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'

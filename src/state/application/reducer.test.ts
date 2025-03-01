@@ -1,4 +1,4 @@
-import { ChainId } from '@gulabs/guswap-sdk'
+import { ChainId } from '@x-gate-project/x-swap-sdk'
 import { createStore, Store } from 'redux'
 import { addPopup, ApplicationModal, removePopup, setOpenModal, updateBlockNumber } from './actions'
 import reducer, { ApplicationState } from './reducer'

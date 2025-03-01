@@ -1,4 +1,4 @@
-import { ChainId } from '@gulabs/guswap-sdk'
+import { ChainId } from '@x-gate-project/x-swap-sdk'
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import Modal from '../Modal'

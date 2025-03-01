@@ -1,4 +1,4 @@
-import { ChainId, Token } from '@gulabs/guswap-sdk'
+import { ChainId, Token } from '@x-gate-project/x-swap-sdk'
 import { Tags, TokenInfo, TokenList } from '@uniswap/token-lists'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
@@ -31,11 +31,12 @@ export type TokenAddressMap = Readonly<{ [chainId in ChainId]: Readonly<{ [token
  * An empty result, useful as a default.
  */
 const EMPTY_LIST: TokenAddressMap = {
-  [ChainId.KOVAN]: {},
-  [ChainId.RINKEBY]: {},
-  [ChainId.ROPSTEN]: {},
-  [ChainId.GÖRLI]: {},
   [ChainId.MAINNET]: {},
+  [ChainId.BASE]: {},
+  [ChainId.AVALANCHE]: {},
+  [ChainId.ARBITRUM_ONE]: {},
+
+  [ChainId.SEPOLIA]: {},
   [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: {}
 }
 

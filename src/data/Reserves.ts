@@ -1,6 +1,6 @@
-import { TokenAmount, Pair, Currency } from '@gulabs/guswap-sdk'
+import { TokenAmount, Pair, Currency } from '@x-gate-project/x-swap-sdk'
 import { useMemo } from 'react'
-import { abi as IUniswapV2PairABI } from '@gulabs/guswap-core/build/IUniswapV2Pair.json'
+import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 import { Interface } from '@ethersproject/abi'
 import { useActiveWeb3React } from '../hooks'
 

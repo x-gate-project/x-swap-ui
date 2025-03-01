@@ -31,18 +31,31 @@ async function fetchChunk(
   minBlockNumber: number
 ): Promise<{ results: string[]; blockNumber: number }> {
   console.debug('Fetching chunk', multicallContract, chunk, minBlockNumber)
+
   let resultsBlockNumber, returnData
   try {
-    ;[resultsBlockNumber, returnData] = await multicallContract.aggregate(chunk.map(obj => [obj.address, obj.callData]))
+    ;[resultsBlockNumber, returnData] = await multicallContract.callStatic.multicall(
+      chunk.map(obj => ({
+        target: obj.address,
+        gasLimit: 1_000_000,
+        callData: obj.callData
+      }))
+    )
   } catch (error) {
     console.debug('Failed to fetch chunk inside retry', error)
     throw error
   }
+
   if (resultsBlockNumber.toNumber() < minBlockNumber) {
     console.debug(`Fetched results for old block number: ${resultsBlockNumber.toString()} vs. ${minBlockNumber}`)
     throw new RetryableError('Fetched for old block number')
   }
-  return { results: returnData, blockNumber: resultsBlockNumber.toNumber() }
+
+  const parsedResults = returnData.map(
+    (result: { success: boolean; gasUsed: number; returnData: string }) => result.returnData
+  )
+
+  return { results: parsedResults, blockNumber: resultsBlockNumber.toNumber() }
 }
 
 /**

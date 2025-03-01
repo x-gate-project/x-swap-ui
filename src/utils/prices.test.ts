@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from '@gulabs/guswap-sdk'
+import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from '@x-gate-project/x-swap-sdk'
 import { computeTradePriceBreakdown } from './prices'
 
 describe('prices', () => {

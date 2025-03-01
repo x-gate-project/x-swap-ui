@@ -1,4 +1,4 @@
-import { Currency, Pair } from '@gulabs/guswap-sdk'
+import { Currency, Pair } from '@x-gate-project/x-swap-sdk'
 import React, { useState, useContext, useCallback } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { darken } from 'polished'

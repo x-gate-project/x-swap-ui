@@ -1,4 +1,4 @@
-import { Currency } from '@gulabs/guswap-sdk'
+import { Currency } from '@x-gate-project/x-swap-sdk'
 import React from 'react'
 import styled from 'styled-components'
 import CurrencyLogo from '../CurrencyLogo'

@@ -1,7 +1,7 @@
 {
-  "name": "@gulabs/interface",
+  "name": "@x-gate-project/x-swap",
   "version": "0.0.1",
-  "description": "GUSwap Interface",
+  "description": "X-Swap UI",
   "homepage": ".",
   "private": true,
   "engines": {
@@ -9,9 +9,6 @@
   },
   "devDependencies": {
     "@ethersproject/experimental": "^5.0.1",
-    "@gulabs/guswap-core": "https://github.com/gulabs/guswap-core.git#v0.0.1",
-    "@gulabs/guswap-periphery": "https://github.com/gulabs/guswap-periphery.git#v0.0.1",
-    "@gulabs/guswap-sdk": "https://github.com/gulabs/guswap-sdk.git#main",
     "@popperjs/core": "^2.4.4",
     "@reach/dialog": "^0.10.3",
     "@reach/portal": "^0.10.3",
@@ -35,12 +32,15 @@
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
     "@uniswap/token-lists": "^1.0.0-beta.18",
+    "@uniswap/v2-core": "1.0.0",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "@web3-react/core": "^6.0.9",
     "@web3-react/fortmatic-connector": "^6.0.9",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/portis-connector": "^6.0.9",
     "@web3-react/walletconnect-connector": "^6.1.1",
     "@web3-react/walletlink-connector": "^6.0.9",
+    "@x-gate-project/x-swap-sdk": "https://github.com/x-gate-project/x-swap-sdk.git#main",
     "ajv": "^6.12.3",
     "cids": "^1.0.0",
     "copy-to-clipboard": "^3.2.0",
@@ -95,7 +95,7 @@
   },
   "scripts": {
     "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
-    "build": "react-scripts build",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "integration-test": "start-server-and-test 'serve build -l 3000' http://localhost:3000 'cypress run'"

@@ -1,4 +1,4 @@
-import { CurrencyAmount, ETHER, Percent, Route, TokenAmount, Trade } from '@gulabs/guswap-sdk'
+import { CurrencyAmount, ETHER, Percent, Route, TokenAmount, Trade } from '@x-gate-project/x-swap-sdk'
 import { DAI, USDC } from '../constants'
 import { MockV1Pair } from '../data/V1'
 import v1SwapArguments from './v1SwapArguments'

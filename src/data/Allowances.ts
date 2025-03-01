@@ -1,4 +1,4 @@
-import { Token, TokenAmount } from '@gulabs/guswap-sdk'
+import { Token, TokenAmount } from '@x-gate-project/x-swap-sdk'
 import { useMemo } from 'react'
 
 import { useTokenContract } from '../hooks/useContract'

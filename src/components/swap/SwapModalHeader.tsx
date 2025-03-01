@@ -1,4 +1,4 @@
-import { Trade, TradeType } from '@gulabs/guswap-sdk'
+import { Trade, TradeType } from '@x-gate-project/x-swap-sdk'
 import React, { useContext, useMemo } from 'react'
 import { ArrowDown, AlertTriangle } from 'react-feather'
 import { Text } from 'rebass'

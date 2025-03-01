@@ -7,18 +7,21 @@ import { PortisConnector } from '@web3-react/portis-connector'
 import { FortmaticConnector } from './Fortmatic'
 import { NetworkConnector } from './NetworkConnector'
 
-const NETWORK_URL = process.env.REACT_APP_NETWORK_URL
+export const NETWORK_URL = process.env.REACT_APP_MAINNET_URL || ''
 const FORMATIC_KEY = process.env.REACT_APP_FORTMATIC_KEY
 const PORTIS_ID = process.env.REACT_APP_PORTIS_ID
 
-export const NETWORK_CHAIN_ID: number = parseInt(process.env.REACT_APP_CHAIN_ID ?? '1')
-
-if (typeof NETWORK_URL === 'undefined') {
-  throw new Error(`REACT_APP_NETWORK_URL must be a defined environment variable`)
-}
-
 export const network = new NetworkConnector({
-  urls: { [NETWORK_CHAIN_ID]: NETWORK_URL }
+  urls: {
+    [1]: process.env.REACT_APP_MAINNET_NETWORK_URL || '',
+    [8453]: process.env.REACT_APP_BASE_NETWORK_URL || '',
+    [43114]: process.env.REACT_APP_AVALANCHE_NETWORK_URL || '',
+    [42161]: process.env.REACT_APP_ARBITRUM_ONE_NETWORK_URL || '',
+
+    [11155111]: process.env.REACT_APP_SEPOLIA_NETWORK_URL || '',
+    [10081]: process.env.REACT_APP_JAPAN_OPEN_CHAIN_TESTNET_NETWORK_URL || ''
+  },
+  defaultChainId: 1
 })
 
 let networkLibrary: Web3Provider | undefined
@@ -27,7 +30,7 @@ export function getNetworkLibrary(): Web3Provider {
 }
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [1, 3, 4, 5, 42, 10081]
+  supportedChainIds: [1, 11155111, 10081]
 })
 
 // mainnet only

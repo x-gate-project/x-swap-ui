@@ -1,4 +1,4 @@
-import { ChainId } from '@gulabs/guswap-sdk'
+import { ChainId } from '@x-gate-project/x-swap-sdk'
 import React from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
@@ -223,10 +223,7 @@ const StyledExternalLink = styled(ExternalLink).attrs({
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
-  [ChainId.RINKEBY]: 'Rinkeby',
-  [ChainId.ROPSTEN]: 'Ropsten',
-  [ChainId.GÖRLI]: 'Görli',
-  [ChainId.KOVAN]: 'Kovan',
+  [ChainId.SEPOLIA]: 'Sepolia',
   [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: 'Japan Open Chain Testnet'
 }
 
