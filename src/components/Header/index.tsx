@@ -271,7 +271,9 @@ export default function Header() {
           </UniIcon>
         </Title> */}
         <HeaderLinks>
-          <StyledLink href={process.env.REACT_APP_X_GATE_URL}>Transfer</StyledLink>
+          <StyledLink href={process.env.REACT_APP_X_GATE_URL || 'https://www.x-gate.org'} target="_self">
+            Transfer
+          </StyledLink>
           <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
             {t('swap')}
           </StyledNavLink>
