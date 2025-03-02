@@ -3,6 +3,7 @@ import { CurrencyAmount, Fraction, JSBI, Percent, TokenAmount, Trade } from '@x-
 import { ALLOWED_PRICE_IMPACT_HIGH, ALLOWED_PRICE_IMPACT_LOW, ALLOWED_PRICE_IMPACT_MEDIUM } from '../constants'
 import { Field } from '../state/swap/actions'
 import { basisPointsToPercent } from './index'
+import { useGetCurrencySymbol } from 'state/wallet/hooks'
 
 const BASE_FEE = new Percent(JSBI.BigInt(30), JSBI.BigInt(10000))
 const ONE_HUNDRED_PERCENT = new Percent(JSBI.BigInt(10000), JSBI.BigInt(10000))
@@ -62,15 +63,19 @@ export function warningSeverity(priceImpact: Percent | undefined): 0 | 1 | 2 | 3
   return 0
 }
 
-export function formatExecutionPrice(trade?: Trade, inverted?: boolean): string {
-  if (!trade) {
-    return ''
+export function useFormatExecutionPrice() {
+  const getCurrencySymbol = useGetCurrencySymbol()
+
+  return (trade?: Trade, inverted?: boolean) => {
+    if (!trade) {
+      return ''
+    }
+    return inverted
+      ? `${trade.executionPrice.invert().toSignificant(6)} ${getCurrencySymbol(
+          trade.inputAmount.currency
+        )} / ${getCurrencySymbol(trade.outputAmount.currency)}`
+      : `${trade.executionPrice.toSignificant(6)} ${getCurrencySymbol(
+          trade.outputAmount.currency
+        )} / ${getCurrencySymbol(trade.inputAmount.currency)}`
   }
-  return inverted
-    ? `${trade.executionPrice.invert().toSignificant(6)} ${trade.inputAmount.currency.symbol} / ${
-        trade.outputAmount.currency.symbol
-      }`
-    : `${trade.executionPrice.toSignificant(6)} ${trade.outputAmount.currency.symbol} / ${
-        trade.inputAmount.currency.symbol
-      }`
 }

@@ -3,9 +3,12 @@ import React, { useMemo } from 'react'
 import styled from 'styled-components'
 
 import EthereumLogo from '../../assets/images/ethereum-logo.png'
+import JocLogo from '../../assets/images/joc-logo.png'
+import JoctLogo from '../../assets/images/joct-logo.png'
 import useHttpLocations from '../../hooks/useHttpLocations'
 import { WrappedTokenInfo } from '../../state/lists/hooks'
 import Logo from '../Logo'
+import { useActiveWeb3React } from 'hooks'
 
 const getTokenLogoURL = (address: string) =>
   `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
@@ -33,6 +36,7 @@ export default function CurrencyLogo({
   size?: string
   style?: React.CSSProperties
 }) {
+  const { chainId } = useActiveWeb3React()
   const uriLocations = useHttpLocations(currency instanceof WrappedTokenInfo ? currency.logoURI : undefined)
 
   const srcs: string[] = useMemo(() => {
@@ -49,6 +53,8 @@ export default function CurrencyLogo({
   }, [currency, uriLocations])
 
   if (currency === ETHER) {
+    if (chainId === 81) return <StyledEthereumLogo src={JocLogo} size={size} style={style} />
+    if (chainId === 10081) return <StyledEthereumLogo src={JoctLogo} size={size} style={style} />
     return <StyledEthereumLogo src={EthereumLogo} size={size} style={style} />
   }
 

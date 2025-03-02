@@ -37,6 +37,7 @@ import { Dots, Wrapper } from '../Pool/styleds'
 import { ConfirmAddModalBottom } from './ConfirmAddModalBottom'
 import { currencyId } from '../../utils/currencyId'
 import { PoolPriceBar } from './PoolPriceBar'
+import { useGetCurrencySymbol } from 'state/wallet/hooks'
 
 export default function AddLiquidity({
   match: {
@@ -44,6 +45,7 @@ export default function AddLiquidity({
   },
   history
 }: RouteComponentProps<{ currencyIdA?: string; currencyIdB?: string }>) {
+  const getCurrencySymbol = useGetCurrencySymbol()
   const { account, chainId, library } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
 
@@ -188,11 +190,11 @@ export default function AddLiquidity({
               'Add ' +
               parsedAmounts[Field.CURRENCY_A]?.toSignificant(3) +
               ' ' +
-              currencies[Field.CURRENCY_A]?.symbol +
+              getCurrencySymbol(currencies[Field.CURRENCY_A]) +
               ' and ' +
               parsedAmounts[Field.CURRENCY_B]?.toSignificant(3) +
               ' ' +
-              currencies[Field.CURRENCY_B]?.symbol
+              getCurrencySymbol(currencies[Field.CURRENCY_B])
           })
 
           setTxHash(response.hash)
@@ -200,7 +202,10 @@ export default function AddLiquidity({
           ReactGA.event({
             category: 'Liquidity',
             action: 'Add',
-            label: [currencies[Field.CURRENCY_A]?.symbol, currencies[Field.CURRENCY_B]?.symbol].join('/')
+            label: [
+              getCurrencySymbol(currencies[Field.CURRENCY_A]),
+              getCurrencySymbol(currencies[Field.CURRENCY_B])
+            ].join('/')
           })
         })
       )
@@ -219,7 +224,7 @@ export default function AddLiquidity({
         <LightCard mt="20px" borderRadius="20px">
           <RowFlat>
             <Text fontSize="48px" fontWeight={500} lineHeight="42px" marginRight={10}>
-              {currencies[Field.CURRENCY_A]?.symbol + '/' + currencies[Field.CURRENCY_B]?.symbol}
+              {getCurrencySymbol(currencies[Field.CURRENCY_A]) + '/' + getCurrencySymbol(currencies[Field.CURRENCY_B])}
             </Text>
             <DoubleCurrencyLogo
               currency0={currencies[Field.CURRENCY_A]}
@@ -243,7 +248,10 @@ export default function AddLiquidity({
         </RowFlat>
         <Row>
           <Text fontSize="24px">
-            {currencies[Field.CURRENCY_A]?.symbol + '/' + currencies[Field.CURRENCY_B]?.symbol + ' Pool Tokens'}
+            {getCurrencySymbol(currencies[Field.CURRENCY_A]) +
+              '/' +
+              getCurrencySymbol(currencies[Field.CURRENCY_B]) +
+              ' Pool Tokens'}
           </Text>
         </Row>
         <TYPE.italic fontSize={12} textAlign="left" padding={'8px 0 0 0 '}>
@@ -267,9 +275,9 @@ export default function AddLiquidity({
     )
   }
 
-  const pendingText = `Supplying ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${
-    currencies[Field.CURRENCY_A]?.symbol
-  } and ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)} ${currencies[Field.CURRENCY_B]?.symbol}`
+  const pendingText = `Supplying ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${getCurrencySymbol(
+    currencies[Field.CURRENCY_A]
+  )} and ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)} ${getCurrencySymbol(currencies[Field.CURRENCY_B])}`
 
   const handleCurrencyASelect = useCallback(
     (currencyA: Currency) => {
@@ -412,9 +420,9 @@ export default function AddLiquidity({
                           width={approvalB !== ApprovalState.APPROVED ? '48%' : '100%'}
                         >
                           {approvalA === ApprovalState.PENDING ? (
-                            <Dots>Approving {currencies[Field.CURRENCY_A]?.symbol}</Dots>
+                            <Dots>Approving {getCurrencySymbol(currencies[Field.CURRENCY_A])}</Dots>
                           ) : (
-                            'Approve ' + currencies[Field.CURRENCY_A]?.symbol
+                            'Approve ' + getCurrencySymbol(currencies[Field.CURRENCY_A])
                           )}
                         </ButtonPrimary>
                       )}
@@ -425,9 +433,9 @@ export default function AddLiquidity({
                           width={approvalA !== ApprovalState.APPROVED ? '48%' : '100%'}
                         >
                           {approvalB === ApprovalState.PENDING ? (
-                            <Dots>Approving {currencies[Field.CURRENCY_B]?.symbol}</Dots>
+                            <Dots>Approving {getCurrencySymbol(currencies[Field.CURRENCY_B])}</Dots>
                           ) : (
-                            'Approve ' + currencies[Field.CURRENCY_B]?.symbol
+                            'Approve ' + getCurrencySymbol(currencies[Field.CURRENCY_B])
                           )}
                         </ButtonPrimary>
                       )}

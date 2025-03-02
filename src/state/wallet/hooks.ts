@@ -130,3 +130,25 @@ export function useAllTokenBalances(): { [tokenAddress: string]: TokenAmount | u
   const balances = useTokenBalances(account ?? undefined, allTokensArray)
   return balances ?? {}
 }
+
+export function useNativeSymbol(): string {
+  const { chainId } = useActiveWeb3React()
+  return chainId === 81 ? 'JOC' : chainId === 10081 ? 'JOCT' : 'ETH'
+}
+
+export function useWrappedNativeSymbol(): string {
+  const { chainId } = useActiveWeb3React()
+  return chainId === 81 ? 'WJOC' : chainId === 10081 ? 'WJOCT' : 'WETH'
+}
+
+export function useGetCurrencySymbol() {
+  const { chainId } = useActiveWeb3React()
+
+  return (currency?: Currency | null): string => {
+    if (currency === ETHER) {
+      return chainId === 81 ? 'JOC' : chainId === 10081 ? 'JOCT' : 'ETH'
+    }
+
+    return currency?.symbol || ''
+  }
+}

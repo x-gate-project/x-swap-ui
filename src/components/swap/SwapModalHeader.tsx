@@ -12,6 +12,7 @@ import { AutoColumn } from '../Column'
 import CurrencyLogo from '../CurrencyLogo'
 import { RowBetween, RowFixed } from '../Row'
 import { TruncatedText, SwapShowAcceptChanges } from './styleds'
+import { useGetCurrencySymbol } from 'state/wallet/hooks'
 
 export default function SwapModalHeader({
   trade,
@@ -34,6 +35,7 @@ export default function SwapModalHeader({
   const priceImpactSeverity = warningSeverity(priceImpactWithoutFee)
 
   const theme = useContext(ThemeContext)
+  const getCurrencySymbol = useGetCurrencySymbol()
 
   return (
     <AutoColumn gap={'md'} style={{ marginTop: '20px' }}>
@@ -50,7 +52,7 @@ export default function SwapModalHeader({
         </RowFixed>
         <RowFixed gap={'0px'}>
           <Text fontSize={24} fontWeight={500} style={{ marginLeft: '10px' }}>
-            {trade.inputAmount.currency.symbol}
+            {getCurrencySymbol(trade.inputAmount.currency)}
           </Text>
         </RowFixed>
       </RowBetween>
@@ -76,7 +78,7 @@ export default function SwapModalHeader({
         </RowFixed>
         <RowFixed gap={'0px'}>
           <Text fontSize={24} fontWeight={500} style={{ marginLeft: '10px' }}>
-            {trade.outputAmount.currency.symbol}
+            {getCurrencySymbol(trade.outputAmount.currency)}
           </Text>
         </RowFixed>
       </RowBetween>
@@ -101,7 +103,7 @@ export default function SwapModalHeader({
           <TYPE.italic textAlign="left" style={{ width: '100%' }}>
             {`Output is estimated. You will receive at least `}
             <b>
-              {slippageAdjustedAmounts[Field.OUTPUT]?.toSignificant(6)} {trade.outputAmount.currency.symbol}
+              {slippageAdjustedAmounts[Field.OUTPUT]?.toSignificant(6)} {getCurrencySymbol(trade.outputAmount.currency)}
             </b>
             {' or the transaction will revert.'}
           </TYPE.italic>
@@ -109,7 +111,7 @@ export default function SwapModalHeader({
           <TYPE.italic textAlign="left" style={{ width: '100%' }}>
             {`Input is estimated. You will sell at most `}
             <b>
-              {slippageAdjustedAmounts[Field.INPUT]?.toSignificant(6)} {trade.inputAmount.currency.symbol}
+              {slippageAdjustedAmounts[Field.INPUT]?.toSignificant(6)} {getCurrencySymbol(trade.inputAmount.currency)}
             </b>
             {' or the transaction will revert.'}
           </TYPE.italic>

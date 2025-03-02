@@ -2,7 +2,7 @@ import { Currency, Pair } from '@x-gate-project/x-swap-sdk'
 import React, { useState, useContext, useCallback } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { darken } from 'polished'
-import { useCurrencyBalance } from '../../state/wallet/hooks'
+import { useCurrencyBalance, useGetCurrencySymbol } from '../../state/wallet/hooks'
 import CurrencySearchModal from '../SearchModal/CurrencySearchModal'
 import CurrencyLogo from '../CurrencyLogo'
 import DoubleCurrencyLogo from '../DoubleLogo'
@@ -160,6 +160,8 @@ export default function CurrencyInputPanel({
     setModalOpen(false)
   }, [setModalOpen])
 
+  const getCurrencySymbol = useGetCurrencySymbol()
+
   return (
     <InputPanel id={id}>
       <Container hideInput={hideInput}>
@@ -221,11 +223,14 @@ export default function CurrencyInputPanel({
                 </StyledTokenName>
               ) : (
                 <StyledTokenName className="token-symbol-container" active={Boolean(currency && currency.symbol)}>
-                  {(currency && currency.symbol && currency.symbol.length > 20
-                    ? currency.symbol.slice(0, 4) +
+                  {(getCurrencySymbol(currency).length > 20
+                    ? getCurrencySymbol(currency).slice(0, 4) +
                       '...' +
-                      currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
-                    : currency?.symbol) || t('selectToken')}
+                      getCurrencySymbol(currency).slice(
+                        getCurrencySymbol(currency).length - 5,
+                        getCurrencySymbol(currency).length
+                      )
+                    : getCurrencySymbol(currency)) || t('selectToken')}
                 </StyledTokenName>
               )}
               {!disableCurrencySelect && <StyledDropDown selected={!!currency} />}

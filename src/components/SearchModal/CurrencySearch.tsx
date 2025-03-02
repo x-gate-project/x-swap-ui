@@ -22,6 +22,7 @@ import SortButton from './SortButton'
 import { useTokenComparator } from './sorting'
 import { PaddedColumn, SearchInput, Separator } from './styleds'
 import AutoSizer from 'react-virtualized-auto-sizer'
+import { useGetCurrencySymbol } from 'state/wallet/hooks'
 
 interface CurrencySearchProps {
   isOpen: boolean
@@ -42,6 +43,7 @@ export function CurrencySearch({
   isOpen,
   onChangeList
 }: CurrencySearchProps) {
+  const getCurrencySymbol = useGetCurrencySymbol()
   const { t } = useTranslation()
   const { chainId } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
@@ -67,7 +69,7 @@ export function CurrencySearch({
 
   const showETH: boolean = useMemo(() => {
     const s = searchQuery.toLowerCase().trim()
-    return s === '' || s === 'e' || s === 'et' || s === 'eth'
+    return s === '' || s === 'e' || s === 'et' || s === 'eth' || s === 'j' || s === 'jo' || s === 'joc' || s === 'joct'
   }, [searchQuery])
 
   const tokenComparator = useTokenComparator(invertSearchOrder)
@@ -89,10 +91,10 @@ export function CurrencySearch({
     return [
       ...(searchToken ? [searchToken] : []),
       // sort any exact symbol matches first
-      ...sorted.filter(token => token.symbol?.toLowerCase() === symbolMatch[0]),
-      ...sorted.filter(token => token.symbol?.toLowerCase() !== symbolMatch[0])
+      ...sorted.filter(token => getCurrencySymbol(token)?.toLowerCase() === symbolMatch[0]),
+      ...sorted.filter(token => getCurrencySymbol(token)?.toLowerCase() !== symbolMatch[0])
     ]
-  }, [filteredTokens, searchQuery, searchToken, tokenComparator])
+  }, [filteredTokens, searchQuery, searchToken, tokenComparator, getCurrencySymbol])
 
   const handleCurrencySelect = useCallback(
     (currency: Currency) => {
