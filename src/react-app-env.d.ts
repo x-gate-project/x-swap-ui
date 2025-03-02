@@ -11,6 +11,10 @@ interface Window {
     isMetaMask?: true
     on?: (...args: any[]) => void
     removeListener?: (...args: any[]) => void
+    send: unknown
+    enable: () => Promise<string[]>
+    on?: (method: string, listener: (...args: any[]) => void) => void
+    removeListener?: (method: string, listener: (...args: any[]) => void) => void
   }
   web3?: {}
 }
