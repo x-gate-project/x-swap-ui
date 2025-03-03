@@ -11,6 +11,7 @@ import { calculateGasMargin } from '../utils'
 import { useTokenContract } from './useContract'
 import { useActiveWeb3React } from './index'
 import { Version } from './useToggledVersion'
+import { useGetCurrencySymbol } from 'state/wallet/hooks'
 
 export enum ApprovalState {
   UNKNOWN,
@@ -24,6 +25,7 @@ export function useApproveCallback(
   amountToApprove?: CurrencyAmount,
   spender?: string
 ): [ApprovalState, () => Promise<void>] {
+  const getCurrencySymbol = useGetCurrencySymbol()
   const { account } = useActiveWeb3React()
   const token = amountToApprove instanceof TokenAmount ? amountToApprove.token : undefined
   const currentAllowance = useTokenAllowance(token, account ?? undefined, spender)
@@ -85,7 +87,7 @@ export function useApproveCallback(
       })
       .then((response: TransactionResponse) => {
         addTransaction(response, {
-          summary: 'Approve ' + amountToApprove.currency.symbol,
+          summary: 'Approve ' + getCurrencySymbol(amountToApprove.currency),
           approval: { tokenAddress: token.address, spender: spender }
         })
       })
@@ -93,7 +95,7 @@ export function useApproveCallback(
         console.debug('Failed to approve token', error)
         throw error
       })
-  }, [approvalState, token, tokenContract, amountToApprove, spender, addTransaction])
+  }, [approvalState, token, tokenContract, amountToApprove, spender, addTransaction, getCurrencySymbol])
 
   return [approvalState, approve]
 }

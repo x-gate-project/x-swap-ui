@@ -12,6 +12,7 @@ import { AutoRow, RowBetween } from '../Row'
 import { AutoColumn } from '../Column'
 import { AlertTriangle } from 'react-feather'
 import { ButtonError } from '../Button'
+import { useGetCurrencySymbol } from 'state/wallet/hooks'
 
 const Wrapper = styled.div<{ error: boolean }>`
   background: ${({ theme }) => transparentize(0.6, theme.bg3)};
@@ -38,6 +39,7 @@ interface TokenWarningCardProps {
 }
 
 function TokenWarningCard({ token }: TokenWarningCardProps) {
+  const getCurrencySymbol = useGetCurrencySymbol()
   const { chainId } = useActiveWeb3React()
 
   const tokenSymbol = token?.symbol?.toLowerCase() ?? ''
@@ -69,12 +71,12 @@ function TokenWarningCard({ token }: TokenWarningCardProps) {
         <AutoColumn gap="10px" justify="flex-start">
           <TYPE.main>
             {token && token.name && token.symbol && token.name !== token.symbol
-              ? `${token.name} (${token.symbol})`
-              : token.name || token.symbol}{' '}
+              ? `${token.name} (${getCurrencySymbol(token)})`
+              : token.name || getCurrencySymbol(token)}{' '}
           </TYPE.main>
           {chainId && (
             <ExternalLink style={{ fontWeight: 400 }} href={getEtherscanLink(chainId, token.address, 'token')}>
-              <TYPE.blue title={token.address}>{shortenAddress(token.address)} (View on Etherscan)</TYPE.blue>
+              <TYPE.blue title={token.address}>{shortenAddress(token.address)} (View on Block Explorer)</TYPE.blue>
             </ExternalLink>
           )}
         </AutoColumn>

@@ -41,7 +41,10 @@ export function getEtherscanLink(
   type: 'transaction' | 'token' | 'address' | 'block'
 ): string {
   let prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}etherscan.io`
-  if (chainId === ChainId.JAPAN_OPEN_CHAIN_TESTNET) {
+
+  if (chainId === 81) {
+    prefix = 'https://explorer.testnet.japanopenchain.org'
+  } else if (chainId === ChainId.JAPAN_OPEN_CHAIN_TESTNET) {
     prefix = 'https://explorer.testnet.japanopenchain.org'
   }
 
