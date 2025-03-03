@@ -71,6 +71,7 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
+  [ChainId.JAPAN_OPEN_CHAIN]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN]],
   [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET]]
 }
 
@@ -78,6 +79,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
+  [ChainId.JAPAN_OPEN_CHAIN]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN]],
   [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET]]
 }
 
@@ -90,6 +92,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     [USDC, USDT],
     [DAI, USDT]
   ],
+  [ChainId.JAPAN_OPEN_CHAIN]: [],
   [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: []
 }
 
