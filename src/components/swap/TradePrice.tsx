@@ -5,6 +5,7 @@ import { Repeat } from 'react-feather'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
 import { StyledBalanceMaxMini } from './styleds'
+import { useGetCurrencySymbol } from 'state/wallet/hooks'
 
 interface TradePriceProps {
   price?: Price
@@ -13,14 +14,15 @@ interface TradePriceProps {
 }
 
 export default function TradePrice({ price, showInverted, setShowInverted }: TradePriceProps) {
+  const getCurrencySymbol = useGetCurrencySymbol()
   const theme = useContext(ThemeContext)
 
   const formattedPrice = showInverted ? price?.toSignificant(6) : price?.invert()?.toSignificant(6)
 
   const show = Boolean(price?.baseCurrency && price?.quoteCurrency)
   const label = showInverted
-    ? `${price?.quoteCurrency?.symbol} per ${price?.baseCurrency?.symbol}`
-    : `${price?.baseCurrency?.symbol} per ${price?.quoteCurrency?.symbol}`
+    ? `${getCurrencySymbol(price?.quoteCurrency)} per ${getCurrencySymbol(price?.baseCurrency)}`
+    : `${getCurrencySymbol(price?.baseCurrency)} per ${getCurrencySymbol(price?.quoteCurrency)}`
 
   return (
     <Text
