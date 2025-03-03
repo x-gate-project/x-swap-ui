@@ -13,7 +13,7 @@ import CurrencySearchModal from '../../components/SearchModal/CurrencySearchModa
 import { PairState, usePair } from '../../data/Reserves'
 import { useActiveWeb3React } from '../../hooks'
 import { usePairAdder } from '../../state/user/hooks'
-import { useTokenBalance } from '../../state/wallet/hooks'
+import { useGetCurrencySymbol, useTokenBalance } from '../../state/wallet/hooks'
 import { StyledInternalLink } from '../../theme'
 import { currencyId } from '../../utils/currencyId'
 import AppBody from '../AppBody'
@@ -25,6 +25,7 @@ enum Fields {
 }
 
 export default function PoolFinder() {
+  const getCurrencySymbol = useGetCurrencySymbol()
   const { account } = useActiveWeb3React()
 
   const [showSearch, setShowSearch] = useState<boolean>(false)
@@ -90,7 +91,7 @@ export default function PoolFinder() {
             <Row>
               <CurrencyLogo currency={currency0} />
               <Text fontWeight={500} fontSize={20} marginLeft={'12px'}>
-                {currency0.symbol}
+                {getCurrencySymbol(currency0)}
               </Text>
             </Row>
           ) : (
@@ -114,7 +115,7 @@ export default function PoolFinder() {
             <Row>
               <CurrencyLogo currency={currency1} />
               <Text fontWeight={500} fontSize={20} marginLeft={'12px'}>
-                {currency1.symbol}
+                {getCurrencySymbol(currency1)}
               </Text>
             </Row>
           ) : (

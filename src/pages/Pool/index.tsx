@@ -194,14 +194,14 @@ export default function Pool() {
               </EmptyProposals>
             )}
 
-            {/* <AutoColumn justify={'center'} gap="md">
+            <AutoColumn justify={'center'} gap="md">
               <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
                 {hasV1Liquidity ? 'Uniswap V1 liquidity found!' : "Don't see a pool you joined?"}{' '}
                 <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
                   {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}
                 </StyledInternalLink>
               </Text>
-            </AutoColumn> */}
+            </AutoColumn>
           </AutoColumn>
         </AutoColumn>
       </PageWrapper>
