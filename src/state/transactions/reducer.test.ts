@@ -1,4 +1,4 @@
-import { ChainId } from '@x-gate-project/x-swap-sdk'
+import { ChainId } from '../../libs/x-swap-sdk'
 import { createStore, Store } from 'redux'
 import { addTransaction, checkedTransaction, clearAllTransactions, finalizeTransaction } from './actions'
 import reducer, { initialState, TransactionState } from './reducer'

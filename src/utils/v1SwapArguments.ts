@@ -1,5 +1,13 @@
 import { MaxUint256 } from '@ethersproject/constants'
-import { CurrencyAmount, ETHER, SwapParameters, Token, Trade, TradeOptionsDeadline, TradeType } from '@x-gate-project/x-swap-sdk'
+import {
+  CurrencyAmount,
+  ETHER,
+  SwapParameters,
+  Token,
+  Trade,
+  TradeOptionsDeadline,
+  TradeType
+} from '../libs/x-swap-sdk'
 import { getTradeVersion } from '../data/V1'
 import { Version } from '../hooks/useToggledVersion'
 

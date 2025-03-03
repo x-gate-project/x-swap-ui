@@ -1,4 +1,4 @@
-import { ChainId, Currency, currencyEquals, JSBI, Price, WETH } from '@x-gate-project/x-swap-sdk'
+import { ChainId, Currency, currencyEquals, JSBI, Price, WETH } from '../libs/x-swap-sdk'
 import { useMemo } from 'react'
 import { USDC } from '../constants'
 import { PairState, usePairs } from '../data/Reserves'

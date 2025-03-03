@@ -1,5 +1,5 @@
 import React from 'react'
-import { CurrencyAmount, Fraction, JSBI } from '@x-gate-project/x-swap-sdk'
+import { CurrencyAmount, Fraction, JSBI } from '../../libs/x-swap-sdk'
 
 const CURRENCY_AMOUNT_MIN = new Fraction(JSBI.BigInt(1), JSBI.BigInt(1000000))
 

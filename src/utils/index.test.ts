@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { AddressZero } from '@ethersproject/constants'
-import { TokenAmount, Token, ChainId, Percent, JSBI } from '@x-gate-project/x-swap-sdk'
+import { TokenAmount, Token, ChainId, Percent, JSBI } from '../../libs/x-swap-sdk'
 
 import {
   getEtherscanLink,

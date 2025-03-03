@@ -1,4 +1,4 @@
-import { Currency } from '@x-gate-project/x-swap-sdk'
+import { Currency } from '../../libs/x-swap-sdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import ReactGA from 'react-ga'
 import useLast from '../../hooks/useLast'

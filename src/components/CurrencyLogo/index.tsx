@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@x-gate-project/x-swap-sdk'
+import { Currency, ETHER, Token } from '../../libs/x-swap-sdk'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 

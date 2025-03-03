@@ -14,7 +14,7 @@ import {
   Trade,
   TradeType,
   WETH
-} from '@x-gate-project/x-swap-sdk'
+} from '../libs/x-swap-sdk'
 import { useMemo } from 'react'
 import { useActiveWeb3React } from '../hooks'
 import { useAllTokens } from '../hooks/Tokens'

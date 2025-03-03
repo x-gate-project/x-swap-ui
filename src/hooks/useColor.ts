@@ -2,7 +2,7 @@ import { useState, useLayoutEffect } from 'react'
 import { shade } from 'polished'
 import Vibrant from 'node-vibrant'
 import { hex } from 'wcag-contrast'
-import { Token } from '@x-gate-project/x-swap-sdk'
+import { Token } from '../libs/x-swap-sdk'
 
 async function getColorFromToken(token: Token): Promise<string | null> {
   const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${token.address}/logo.png`

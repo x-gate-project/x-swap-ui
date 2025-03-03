@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Percent, Token, WETH } from '@x-gate-project/x-swap-sdk'
+import { ChainId, JSBI, Percent, Token, WETH } from '../libs/x-swap-sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
@@ -42,6 +42,7 @@ export const MERKLE_DISTRIBUTOR_ADDRESS: { [chainId in ChainId]?: string } = {
 
 const WETH_ONLY: ChainTokenList = {
   [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],
+  [ChainId.JAPAN_OPEN_CHAIN]: [WETH[ChainId.JAPAN_OPEN_CHAIN]],
   [ChainId.BASE]: [WETH[ChainId.BASE]],
   [ChainId.AVALANCHE]: [WETH[ChainId.AVALANCHE]],
   [ChainId.ARBITRUM_ONE]: [WETH[ChainId.ARBITRUM_ONE]],

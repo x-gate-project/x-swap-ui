@@ -1,4 +1,4 @@
-import { Currency, currencyEquals, ETHER, WETH } from '@x-gate-project/x-swap-sdk'
+import { Currency, currencyEquals, ETHER, WETH } from '../libs/x-swap-sdk'
 import { useMemo } from 'react'
 import { tryParseAmount } from '../state/swap/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'

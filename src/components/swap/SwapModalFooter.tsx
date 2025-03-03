@@ -1,4 +1,4 @@
-import { Trade, TradeType } from '@x-gate-project/x-swap-sdk'
+import { Trade, TradeType } from '../../libs/x-swap-sdk'
 import React, { useContext, useMemo, useState } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'

@@ -1,4 +1,4 @@
-import { Token, TokenAmount } from '@x-gate-project/x-swap-sdk'
+import { Token, TokenAmount } from '../../libs/x-swap-sdk'
 import { useMemo } from 'react'
 import { useAllTokenBalances } from '../../state/wallet/hooks'
 

@@ -1,4 +1,4 @@
-import { Trade } from '@x-gate-project/x-swap-sdk'
+import { Trade } from '../../libs/x-swap-sdk'
 import React, { Fragment, memo, useContext } from 'react'
 import { ChevronRight } from 'react-feather'
 import { Flex } from 'rebass'

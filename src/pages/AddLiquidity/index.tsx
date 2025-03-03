@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, currencyEquals, ETHER, TokenAmount, V2_ROUTER_ADDRESSES, WETH } from '@x-gate-project/x-swap-sdk'
+import { Currency, currencyEquals, ETHER, TokenAmount, V2_ROUTER_ADDRESSES, WETH } from '../../libs/x-swap-sdk'
 import React, { useCallback, useContext, useState } from 'react'
 import { Plus } from 'react-feather'
 import ReactGA from 'react-ga'

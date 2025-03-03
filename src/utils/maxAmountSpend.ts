@@ -1,4 +1,4 @@
-import { CurrencyAmount, ETHER, JSBI } from '@x-gate-project/x-swap-sdk'
+import { CurrencyAmount, ETHER, JSBI } from '../libs/x-swap-sdk'
 import { MIN_ETH } from '../constants'
 
 /**

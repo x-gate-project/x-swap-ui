@@ -4,16 +4,7 @@ import { AddressZero } from '@ethersproject/constants'
 import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 import { abi as IUniswapV2Router02ABI } from '@uniswap/v2-periphery/build/IUniswapV2Router02.json'
-import {
-  ChainId,
-  JSBI,
-  Percent,
-  Token,
-  CurrencyAmount,
-  Currency,
-  ETHER,
-  V2_ROUTER_ADDRESSES
-} from '@x-gate-project/x-swap-sdk'
+import { ChainId, JSBI, Percent, Token, CurrencyAmount, Currency, ETHER, V2_ROUTER_ADDRESSES } from '../libs/x-swap-sdk'
 import { TokenAddressMap } from '../state/lists/hooks'
 
 // returns the checksummed address if the address is valid, otherwise returns false
@@ -27,6 +18,7 @@ export function isAddress(value: any): string | false {
 
 const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   1: '',
+  81: '',
   [ChainId.BASE]: 'base.',
   [ChainId.AVALANCHE]: 'c-chain.',
   [ChainId.ARBITRUM_ONE]: 'arb.',

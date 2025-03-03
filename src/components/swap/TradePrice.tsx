@@ -1,5 +1,5 @@
 import React from 'react'
-import { Price } from '@x-gate-project/x-swap-sdk'
+import { Price } from '../../libs/x-swap-sdk'
 import { useContext } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'

@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from '@x-gate-project/x-swap-sdk'
+import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from '../../libs/x-swap-sdk'
 import { computeTradePriceBreakdown } from './prices'
 
 describe('prices', () => {

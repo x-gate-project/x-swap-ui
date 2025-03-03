@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@x-gate-project/x-swap-sdk'
+import { Currency, ETHER, Token } from '../libs/x-swap-sdk'
 
 export function currencyId(currency: Currency): string {
   if (currency === ETHER) return 'ETH'

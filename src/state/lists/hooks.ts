@@ -1,4 +1,4 @@
-import { ChainId, Token } from '@x-gate-project/x-swap-sdk'
+import { ChainId, Token } from '../../libs/x-swap-sdk'
 import { Tags, TokenInfo, TokenList } from '@uniswap/token-lists'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
@@ -32,6 +32,7 @@ export type TokenAddressMap = Readonly<{ [chainId in ChainId]: Readonly<{ [token
  */
 const EMPTY_LIST: TokenAddressMap = {
   [ChainId.MAINNET]: {},
+  [ChainId.JAPAN_OPEN_CHAIN]: {},
   [ChainId.BASE]: {},
   [ChainId.AVALANCHE]: {},
   [ChainId.ARBITRUM_ONE]: {},

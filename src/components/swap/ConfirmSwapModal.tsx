@@ -1,4 +1,4 @@
-import { currencyEquals, Trade } from '@x-gate-project/x-swap-sdk'
+import { currencyEquals, Trade } from '../../libs/x-swap-sdk'
 import React, { useCallback, useMemo } from 'react'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,

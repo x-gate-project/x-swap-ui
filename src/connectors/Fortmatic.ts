@@ -1,4 +1,4 @@
-import { ChainId } from '@x-gate-project/x-swap-sdk'
+import { ChainId } from '../libs/x-swap-sdk'
 import { FortmaticConnector as FortmaticConnectorCore } from '@web3-react/fortmatic-connector'
 
 export const OVERLAY_READY = 'OVERLAY_READY'

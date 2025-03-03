@@ -1,4 +1,4 @@
-import { Currency, ETHER, JSBI, TokenAmount } from '@x-gate-project/x-swap-sdk'
+import { Currency, ETHER, JSBI, TokenAmount } from '../../libs/x-swap-sdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Plus } from 'react-feather'
 import { Text } from 'rebass'

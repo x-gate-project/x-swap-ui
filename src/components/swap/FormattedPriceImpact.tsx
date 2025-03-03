@@ -1,4 +1,4 @@
-import { Percent } from '@x-gate-project/x-swap-sdk'
+import { Percent } from '../../libs/x-swap-sdk'
 import React from 'react'
 import { ONE_BIPS } from '../../constants'
 import { warningSeverity } from '../../utils/prices'

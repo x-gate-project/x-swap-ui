@@ -1,4 +1,4 @@
-import { ChainId } from '@x-gate-project/x-swap-sdk'
+import { ChainId } from '../../libs/x-swap-sdk'
 import React from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
@@ -251,6 +251,7 @@ const StyledExternalLink = styled(ExternalLink).attrs({
 
 const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
   [ChainId.SEPOLIA]: 'Sepolia',
+  [ChainId.JAPAN_OPEN_CHAIN]: 'Japan Open Chain',
   [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: 'Japan Open Chain Testnet'
 }
 

@@ -1,6 +1,6 @@
 import { MaxUint256 } from '@ethersproject/constants'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Trade, TokenAmount, CurrencyAmount, ETHER, V2_ROUTER_ADDRESSES } from '@x-gate-project/x-swap-sdk'
+import { Trade, TokenAmount, CurrencyAmount, ETHER, V2_ROUTER_ADDRESSES } from '../libs/x-swap-sdk'
 import { useCallback, useMemo } from 'react'
 import { useTokenAllowance } from '../data/Allowances'
 import { getTradeVersion, useV1TradeExchangeAddress } from '../data/V1'

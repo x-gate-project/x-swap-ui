@@ -1,7 +1,7 @@
 import { splitSignature } from '@ethersproject/bytes'
 import { Contract } from '@ethersproject/contracts'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, currencyEquals, ETHER, Percent, V2_ROUTER_ADDRESSES, WETH } from '@x-gate-project/x-swap-sdk'
+import { Currency, currencyEquals, ETHER, Percent, V2_ROUTER_ADDRESSES, WETH } from '../../libs/x-swap-sdk'
 import React, { useCallback, useContext, useMemo, useState } from 'react'
 import { ArrowDown, Plus } from 'react-feather'
 import ReactGA from 'react-ga'
