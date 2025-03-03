@@ -18,14 +18,6 @@ export const MKR = new Token(ChainId.MAINNET, '0x9f8F72aA9304c8B593d555F12eF6589
 export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
 export const WBTC = new Token(ChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 18, 'WBTC', 'Wrapped BTC')
 
-export const USDTX = new Token(
-  ChainId.JAPAN_OPEN_CHAIN_TESTNET,
-  '0x07B6447c4B05bcaC238a61D82d33a9E9d6c98041',
-  6,
-  'USDTX',
-  'USDTX'
-)
-
 // Block time here is slightly higher (~1s) than average in order to avoid ongoing proposals past the displayed time
 export const AVERAGE_BLOCK_TIME_IN_SECS = 14
 export const PROPOSAL_LENGTH_IN_BLOCKS = 40_320
@@ -78,14 +70,14 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
-  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET], USDTX]
+  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET]]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
-  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET], USDTX]
+  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET]]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -97,7 +89,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     [USDC, USDT],
     [DAI, USDT]
   ],
-  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [[USDTX, WETH[ChainId.JAPAN_OPEN_CHAIN_TESTNET]]]
+  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: []
 }
 
 export interface WalletInfo {

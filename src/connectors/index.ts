@@ -21,7 +21,7 @@ export const network = new NetworkConnector({
     [11155111]: process.env.REACT_APP_SEPOLIA_NETWORK_URL || '',
     [10081]: process.env.REACT_APP_JAPAN_OPEN_CHAIN_TESTNET_NETWORK_URL || ''
   },
-  defaultChainId: 1
+  defaultChainId: 10081
 })
 
 let networkLibrary: Web3Provider | undefined
