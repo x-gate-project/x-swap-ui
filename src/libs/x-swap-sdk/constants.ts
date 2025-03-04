@@ -65,7 +65,7 @@ export const V2_FACTORY_ADDRESSES: AddressMap = {
 
 export const V2_ROUTER_ADDRESSES: AddressMap = {
   [ChainId.MAINNET]: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
-  [ChainId.JAPAN_OPEN_CHAIN]: process.env.REACT_APP_JOC_FACTORY_ADDRESS || '',
+  [ChainId.JAPAN_OPEN_CHAIN]: process.env.REACT_APP_JOC_V2_ROUTER_ADDRESS || '',
   [ChainId.ARBITRUM_ONE]: '0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24',
   [ChainId.AVALANCHE]: '0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24',
   [ChainId.BASE]: '0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24',
