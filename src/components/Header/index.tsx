@@ -291,6 +291,9 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
+          <StyledLink href={'https://docs.x-gate.org/'} target="_blank">
+            Help
+          </StyledLink>
           {/* <StyledExternalLink id={`stake-nav-link`} href={'#'}>
             Charts <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink> */}
