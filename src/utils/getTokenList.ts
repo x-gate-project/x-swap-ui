@@ -1,9 +1,10 @@
-import { TokenList } from '@uniswap/token-lists'
+import { TokenInfo, TokenList } from '@uniswap/token-lists'
 import schema from '@uniswap/token-lists/src/tokenlist.schema.json'
 import Ajv from 'ajv'
 import contenthashToUri from './contenthashToUri'
 import { parseENSAddress } from './parseENSAddress'
 import uriToHttp from './uriToHttp'
+import { supportedChainIds } from 'connectors'
 
 const tokenListValidator = new Ajv({ allErrors: true }).compile(schema)
 
@@ -63,7 +64,12 @@ export default async function getTokenList(
         }, '') ?? 'unknown error'
       throw new Error(`Token list failed validation: ${validationErrors}`)
     }
-    return json
+
+    const filteredJson = {
+      ...json,
+      tokens: json.tokens.filter((token: TokenInfo) => supportedChainIds.includes(token.chainId))
+    }
+    return filteredJson
   }
   throw new Error('Unrecognized list URL protocol.')
 }
