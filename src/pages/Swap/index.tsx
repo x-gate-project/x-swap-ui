@@ -20,7 +20,7 @@ import TradePrice from '../../components/swap/TradePrice'
 import TokenWarningModal from '../../components/TokenWarningModal'
 import ProgressSteps from '../../components/ProgressSteps'
 
-import { BETTER_TRADE_LINK_THRESHOLD, INITIAL_ALLOWED_SLIPPAGE } from '../../constants'
+import { BETTER_TRADE_LINK_THRESHOLD, INITIAL_ALLOWED_SLIPPAGE, USDTX_JOC } from '../../constants'
 import { getTradeVersion, isTradeBetter } from '../../data/V1'
 import { useActiveWeb3React } from '../../hooks'
 import { useCurrency } from '../../hooks/Tokens'
@@ -264,10 +264,13 @@ export default function Swap() {
     onCurrencySelection
   ])
 
+  const isSafeToken = useMemo(() => {
+    return urlLoadedTokens.find(token => token.address === USDTX_JOC.address && token.chainId === USDTX_JOC.chainId)
+  }, [urlLoadedTokens])
   return (
     <>
       <TokenWarningModal
-        isOpen={urlLoadedTokens.length > 0 && !dismissTokenWarning}
+        isOpen={urlLoadedTokens.length > 0 && !dismissTokenWarning && !isSafeToken}
         tokens={urlLoadedTokens}
         onConfirm={handleConfirmTokenWarning}
       />

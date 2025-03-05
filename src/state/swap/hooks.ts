@@ -18,7 +18,7 @@ import { SwapState } from './reducer'
 import useToggledVersion from '../../hooks/useToggledVersion'
 import { useUserSlippageTolerance } from '../user/hooks'
 import { computeSlippageAdjustedAmounts } from '../../utils/prices'
-
+import { USDTX_JOC } from '../../constants'
 export function useSwapState(): AppState['swap'] {
   return useSelector<AppState, AppState['swap']>(state => state.swap)
 }
@@ -282,6 +282,50 @@ export function useDefaultsFromURLSearch():
   const [result, setResult] = useState<
     { inputCurrencyId: string | undefined; outputCurrencyId: string | undefined } | undefined
   >()
+
+  const parseCurrencyFromURLParameter = useCallback(
+    urlParam => {
+      if (typeof urlParam === 'string') {
+        const valid = isAddress(urlParam)
+        if (valid) return valid
+        if (urlParam.toUpperCase() === 'ETH') return 'ETH'
+        if (valid === false) return 'ETH'
+      } else if (chainId === USDTX_JOC.chainId) {
+        return USDTX_JOC.address
+      }
+      return 'ETH'
+    },
+    [chainId]
+  )
+
+  const queryParametersToSwapState = useCallback(
+    parsedQs => {
+      let inputCurrency = parseCurrencyFromURLParameter(parsedQs.inputCurrency)
+      let outputCurrency = parseCurrencyFromURLParameter(parsedQs.outputCurrency)
+      if (inputCurrency === outputCurrency) {
+        if (typeof parsedQs.outputCurrency === 'string') {
+          inputCurrency = ''
+        } else {
+          outputCurrency = ''
+        }
+      }
+
+      const recipient = validatedRecipient(parsedQs.recipient)
+
+      return {
+        [Field.INPUT]: {
+          currencyId: inputCurrency
+        },
+        [Field.OUTPUT]: {
+          currencyId: outputCurrency
+        },
+        typedValue: parseTokenAmountURLParameter(parsedQs.exactAmount),
+        independentField: parseIndependentFieldURLParameter(parsedQs.exactField),
+        recipient
+      }
+    },
+    [parseCurrencyFromURLParameter]
+  )
 
   useEffect(() => {
     if (!chainId) return
