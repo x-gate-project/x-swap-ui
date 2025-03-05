@@ -116,7 +116,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
               </FixedHeightRow>
               <FixedHeightRow>
                 <Text fontSize={16} fontWeight={500}>
-                  {currency0.symbol}:
+                  {getCurrencySymbol(currency0)}:
                 </Text>
                 {token0Deposited ? (
                   <RowFixed>
