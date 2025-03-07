@@ -2,6 +2,7 @@ import { ChainId, JSBI, Percent, Token, WETH } from '../libs/x-swap-sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
+import { WrappedTokenInfo } from '../state/lists/hooks'
 
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
@@ -17,26 +18,49 @@ export const COMP = new Token(ChainId.MAINNET, '0xc00e94Cb662C3520282E6f57172140
 export const MKR = new Token(ChainId.MAINNET, '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2', 18, 'MKR', 'Maker')
 export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
 export const WBTC = new Token(ChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 18, 'WBTC', 'Wrapped BTC')
-export const USDTX_JOC = new Token(
-  ChainId.JAPAN_OPEN_CHAIN,
-  '0xe18e898E5843E8a8EA7A1C4AF08730DcA6689aA9',
-  6,
-  'USDTX',
-  'USDTX'
+export const USDTX_JOC = new WrappedTokenInfo(
+  {
+    chainId: ChainId.JAPAN_OPEN_CHAIN,
+    address: '0xe18e898E5843E8a8EA7A1C4AF08730DcA6689aA9',
+    decimals: 6,
+    name: 'USDTX',
+    symbol: 'USDTX',
+    logoURI: 'https://raw.githubusercontent.com/x-gate-project/x-gate-token-list/main/assets/81_usdtx.svg'
+  },
+  []
 )
-export const USDTX_JOCT = new Token(
-  ChainId.JAPAN_OPEN_CHAIN_TESTNET,
-  '0x07B6447c4B05bcaC238a61D82d33a9E9d6c98041',
-  6,
-  'USDTX',
-  'USDTX'
+export const USDCX_JOC = new WrappedTokenInfo(
+  {
+    chainId: ChainId.JAPAN_OPEN_CHAIN,
+    address: '0x538F7567f16cbE40d051e9f2928d215343D9A13A',
+    decimals: 6,
+    name: 'USDCX',
+    symbol: 'USDCX',
+    logoURI: 'https://raw.githubusercontent.com/x-gate-project/x-gate-token-list/main/assets/81_usdcx.svg'
+  },
+  []
 )
-export const USDCX_JOCT = new Token(
-  ChainId.JAPAN_OPEN_CHAIN_TESTNET,
-  '0x46Ba1d411A6BbFCe2bdB88076bF04bD77bcE38e6',
-  6,
-  'USDTX',
-  'USDTX'
+export const USDTX_JOCT = new WrappedTokenInfo(
+  {
+    chainId: ChainId.JAPAN_OPEN_CHAIN_TESTNET,
+    address: '0x07B6447c4B05bcaC238a61D82d33a9E9d6c98041',
+    decimals: 6,
+    name: 'USDTX',
+    symbol: 'USDTX',
+    logoURI: 'https://raw.githubusercontent.com/x-gate-project/x-gate-token-list/main/assets/10081_usdtx.svg'
+  },
+  []
+)
+export const USDCX_JOCT = new WrappedTokenInfo(
+  {
+    chainId: ChainId.JAPAN_OPEN_CHAIN_TESTNET,
+    address: '0x46Ba1d411A6BbFCe2bdB88076bF04bD77bcE38e6',
+    decimals: 6,
+    name: 'USDCX',
+    symbol: 'USDCX',
+    logoURI: 'https://raw.githubusercontent.com/x-gate-project/x-gate-token-list/main/assets/10081_usdcx.svg'
+  },
+  []
 )
 
 // Block time here is slightly higher (~1s) than average in order to avoid ongoing proposals past the displayed time
@@ -75,7 +99,9 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR]
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR],
+  [ChainId.JAPAN_OPEN_CHAIN]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN], USDTX_JOC, USDCX_JOC],
+  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET], USDTX_JOCT, USDCX_JOCT]
 }
 
 /**
@@ -92,7 +118,7 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
-  [ChainId.JAPAN_OPEN_CHAIN]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN]],
+  [ChainId.JAPAN_OPEN_CHAIN]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN], USDTX_JOC, USDCX_JOC],
   [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET], USDTX_JOCT, USDCX_JOCT]
 }
 
@@ -100,8 +126,8 @@ export const SUGGESTED_BASES: ChainTokenList = {
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
-  [ChainId.JAPAN_OPEN_CHAIN]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN]],
-  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET]]
+  [ChainId.JAPAN_OPEN_CHAIN]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN], USDTX_JOC, USDCX_JOC],
+  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET], USDTX_JOCT, USDCX_JOCT]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -113,8 +139,8 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     [USDC, USDT],
     [DAI, USDT]
   ],
-  [ChainId.JAPAN_OPEN_CHAIN]: [],
-  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: []
+  [ChainId.JAPAN_OPEN_CHAIN]: [[USDTX_JOC, USDCX_JOC]],
+  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [[USDTX_JOCT, USDCX_JOCT]]
 }
 
 export interface WalletInfo {
