@@ -24,6 +24,21 @@ export const USDTX_JOC = new Token(
   'USDTX',
   'USDTX'
 )
+export const USDTX_JOCT = new Token(
+  ChainId.JAPAN_OPEN_CHAIN_TESTNET,
+  '0x07B6447c4B05bcaC238a61D82d33a9E9d6c98041',
+  6,
+  'USDTX',
+  'USDTX'
+)
+export const USDCX_JOCT = new Token(
+  ChainId.JAPAN_OPEN_CHAIN_TESTNET,
+  '0x46Ba1d411A6BbFCe2bdB88076bF04bD77bcE38e6',
+  6,
+  'USDTX',
+  'USDTX'
+)
+
 // Block time here is slightly higher (~1s) than average in order to avoid ongoing proposals past the displayed time
 export const AVERAGE_BLOCK_TIME_IN_SECS = 14
 export const PROPOSAL_LENGTH_IN_BLOCKS = 40_320
@@ -78,7 +93,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
   [ChainId.JAPAN_OPEN_CHAIN]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN]],
-  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET]]
+  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: [...WETH_ONLY[ChainId.JAPAN_OPEN_CHAIN_TESTNET], USDTX_JOCT, USDCX_JOCT]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
