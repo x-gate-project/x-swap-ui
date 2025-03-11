@@ -8,6 +8,8 @@ module.exports = override(
   // Force Babel to transpile the problematic module in node_modules
   babelInclude([
     path.resolve(__dirname, 'src'),
-    path.resolve(__dirname, 'node_modules/@walletconnect/ethereum-provider')
+    path.resolve(__dirname, 'node_modules/@walletconnect'),
+    path.resolve(__dirname, 'node_modules/unstorage'),
+    path.resolve(__dirname, 'node_modules/@web3modal')
   ])
 )

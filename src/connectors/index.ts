@@ -1,11 +1,11 @@
 import { Web3Provider } from '@ethersproject/providers'
-import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 import { PortisConnector } from '@web3-react/portis-connector'
 
 import { FortmaticConnector } from './Fortmatic'
 import { NetworkConnector } from './NetworkConnector'
 import { InjectedConnector } from '../libs/injected-connector'
+import { WalletConnectV2Connector } from 'libs/walletconnect-connector'
 
 export const NETWORK_URL = process.env.REACT_APP_MAINNET_URL || ''
 const FORMATIC_KEY = process.env.REACT_APP_FORTMATIC_KEY
@@ -43,11 +43,20 @@ if (isSupportedJOCT) supportedChainIds.push(10081)
 export const injected = new InjectedConnector({ supportedChainIds })
 
 // mainnet only
-export const walletconnect = new WalletConnectConnector({
-  rpc: { 1: NETWORK_URL },
-  bridge: 'https://bridge.walletconnect.org',
-  qrcode: true,
-  pollingInterval: 15000
+export const walletconnect = new WalletConnectV2Connector({
+  projectId: process.env.REACT_APP_WALLET_CONNECT_V2_PROJECT_ID || '',
+  showQrModal: true,
+  chains: supportedChainIds,
+  rpcMap: {
+    [1]: process.env.REACT_APP_MAINNET_NETWORK_URL || '',
+    [81]: process.env.REACT_APP_JOC_NETWORK_URL || '',
+    [8453]: process.env.REACT_APP_BASE_NETWORK_URL || '',
+    [43114]: process.env.REACT_APP_AVALANCHE_NETWORK_URL || '',
+    [42161]: process.env.REACT_APP_ARBITRUM_ONE_NETWORK_URL || '',
+
+    [11155111]: process.env.REACT_APP_SEPOLIA_NETWORK_URL || '',
+    [10081]: process.env.REACT_APP_JOCT_NETWORK_URL || ''
+  }
 })
 
 // mainnet only
