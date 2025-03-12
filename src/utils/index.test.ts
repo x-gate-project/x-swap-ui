@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { AddressZero } from '@ethersproject/constants'
-import { TokenAmount, Token, ChainId, Percent, JSBI } from '../../libs/x-swap-sdk'
+import { TokenAmount, Token, ChainId, Percent, JSBI } from '../libs/x-swap-sdk'
 
 import {
   getEtherscanLink,
@@ -8,7 +8,7 @@ import {
   isAddress,
   shortenAddress,
   calculateGasMargin,
-  basisPointsToPercent
+  basisPointsToPercent,
 } from '.'
 
 describe('utils', () => {
@@ -20,16 +20,16 @@ describe('utils', () => {
       expect(getEtherscanLink(1, 'abc', 'token')).toEqual('https://etherscan.io/token/abc')
     })
     it('correct for address', () => {
-      expect(getEtherscanLink(1, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
+      expect(getEtherscanLink(ChainId.SEPOLIA, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
     })
     it('unrecognized chain id defaults to mainnet', () => {
-      expect(getEtherscanLink(2, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
+      expect(getEtherscanLink(ChainId.SEPOLIA, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
     })
     it('ropsten', () => {
-      expect(getEtherscanLink(3, 'abc', 'address')).toEqual('https://ropsten.etherscan.io/address/abc')
+      expect(getEtherscanLink(ChainId.SEPOLIA, 'abc', 'address')).toEqual('https://ropsten.etherscan.io/address/abc')
     })
     it('enum', () => {
-      expect(getEtherscanLink(ChainId.RINKEBY, 'abc', 'address')).toEqual('https://rinkeby.etherscan.io/address/abc')
+      expect(getEtherscanLink(ChainId.SEPOLIA, 'abc', 'address')).toEqual('https://rinkeby.etherscan.io/address/abc')
     })
   })
 
@@ -37,10 +37,10 @@ describe('utils', () => {
     it('bounds are correct', () => {
       const tokenAmount = new TokenAmount(new Token(ChainId.MAINNET, AddressZero, 0), '100')
       expect(() => calculateSlippageAmount(tokenAmount, -1)).toThrow()
-      expect(calculateSlippageAmount(tokenAmount, 0).map(bound => bound.toString())).toEqual(['100', '100'])
-      expect(calculateSlippageAmount(tokenAmount, 100).map(bound => bound.toString())).toEqual(['99', '101'])
-      expect(calculateSlippageAmount(tokenAmount, 200).map(bound => bound.toString())).toEqual(['98', '102'])
-      expect(calculateSlippageAmount(tokenAmount, 10000).map(bound => bound.toString())).toEqual(['0', '200'])
+      expect(calculateSlippageAmount(tokenAmount, 0).map((bound) => bound.toString())).toEqual(['100', '100'])
+      expect(calculateSlippageAmount(tokenAmount, 100).map((bound) => bound.toString())).toEqual(['99', '101'])
+      expect(calculateSlippageAmount(tokenAmount, 200).map((bound) => bound.toString())).toEqual(['98', '102'])
+      expect(calculateSlippageAmount(tokenAmount, 10000).map((bound) => bound.toString())).toEqual(['0', '200'])
       expect(() => calculateSlippageAmount(tokenAmount, 10001)).toThrow()
     })
   })
