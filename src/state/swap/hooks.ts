@@ -12,7 +12,7 @@ import { useTradeExactIn, useTradeExactOut } from '../../hooks/Trades'
 import useParsedQueryString from '../../hooks/useParsedQueryString'
 import { isAddress } from '../../utils'
 import { AppDispatch, AppState } from '../index'
-import { useCurrencyBalances } from '../wallet/hooks'
+import { useCurrencyBalances, useGetCurrencySymbol } from '../wallet/hooks'
 import { Field, replaceSwapState, selectCurrency, setRecipient, switchCurrencies, typeInput } from './actions'
 import { SwapState } from './reducer'
 import useToggledVersion from '../../hooks/useToggledVersion'
@@ -202,9 +202,10 @@ export function useDerivedSwapInfo(): {
       ? slippageAdjustedAmounts[Field.INPUT]
       : null
   ]
+  const getCurrencySymbol = useGetCurrencySymbol()
 
   if (balanceIn && amountIn && balanceIn.lessThan(amountIn)) {
-    inputError = 'Insufficient ' + amountIn.currency.symbol + ' balance'
+    inputError = 'Insufficient ' + getCurrencySymbol(amountIn.currency) + ' balance'
   }
 
   return {
