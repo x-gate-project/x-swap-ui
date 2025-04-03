@@ -43,7 +43,7 @@ export const USDCX_JOC = new WrappedTokenInfo(
 export const USDTX_JOCT = new WrappedTokenInfo(
   {
     chainId: ChainId.JAPAN_OPEN_CHAIN_TESTNET,
-    address: '0x07B6447c4B05bcaC238a61D82d33a9E9d6c98041',
+    address: '0x382eb09D8cE59968683001947EF04cB34f7A180E',
     decimals: 6,
     name: 'USDTX',
     symbol: 'USDTX',
@@ -54,7 +54,7 @@ export const USDTX_JOCT = new WrappedTokenInfo(
 export const USDCX_JOCT = new WrappedTokenInfo(
   {
     chainId: ChainId.JAPAN_OPEN_CHAIN_TESTNET,
-    address: '0x46Ba1d411A6BbFCe2bdB88076bF04bD77bcE38e6',
+    address: '0x367f476c9B5fA1e64F3d7EE19c3E4E2f76D42200',
     decimals: 6,
     name: 'USDCX',
     symbol: 'USDCX',
