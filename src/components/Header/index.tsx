@@ -15,8 +15,8 @@ import { useETHBalances, useNativeSymbol } from '../../state/wallet/hooks'
 
 import { ExternalLink } from '../../theme'
 
-import { YellowCard } from '../Card'
 import Settings from '../Settings'
+import NetworkSwitcher from '../NetworkSwitcher'
 
 import Row, { RowFixed } from '../Row'
 import Web3Status from '../Web3Status'
@@ -121,19 +121,6 @@ const HideSmall = styled.span`
   `};
 `
 
-const NetworkCard = styled(YellowCard)`
-  border-radius: 12px;
-  padding: 8px 12px;
-  white-space: nowrap;
-  ${({ theme }) => theme.mediaWidth.upToSmall`
-    margin: 0;
-    margin-right: 0.5rem;
-    width: initial;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex-shrink: 1;
-  `};
-`
 
 const BalanceText = styled(Text)`
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
@@ -249,11 +236,6 @@ const StyledExternalLink = styled(ExternalLink).attrs({
 `}
 `
 
-const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
-  [ChainId.SEPOLIA]: 'Sepolia',
-  [ChainId.JAPAN_OPEN_CHAIN]: 'Japan Open Chain',
-  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: 'Japan Open Chain Testnet'
-}
 
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
@@ -302,9 +284,7 @@ export default function Header() {
       <HeaderControls>
         <HeaderElement>
           <HideSmall>
-            {chainId && NETWORK_LABELS[chainId] && (
-              <NetworkCard title={NETWORK_LABELS[chainId]}>{NETWORK_LABELS[chainId]}</NetworkCard>
-            )}
+            <NetworkSwitcher />
           </HideSmall>
 
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
