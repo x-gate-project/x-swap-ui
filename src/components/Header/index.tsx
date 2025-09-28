@@ -273,6 +273,9 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
+          <StyledLink href={'https://staker.x-swap.org/'} target="_blank">
+            Staking
+          </StyledLink>
           <StyledLink href={'https://docs.x-gate.org/'} target="_blank">
             Help
           </StyledLink>

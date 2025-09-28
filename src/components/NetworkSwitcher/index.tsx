@@ -9,11 +9,11 @@ const NetworkSwitcherContainer = styled.div`
 `
 
 const NetworkButton = styled.button<{ isOpen: boolean; isDisabled?: boolean }>`
-  background: ${({ theme }) => theme.bg3};
-  border: 1px solid ${({ theme }) => theme.bg4};
+  background-color: rgba(243, 132, 30, 0.05);
+  border: none;
   border-radius: 12px;
   padding: 8px 12px;
-  color: ${({ theme }) => theme.text1};
+  color: ${({ theme }) => theme.yellow2};
   font-weight: 500;
   font-size: 14px;
   cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
@@ -25,8 +25,7 @@ const NetworkButton = styled.button<{ isOpen: boolean; isDisabled?: boolean }>`
   opacity: ${({ isDisabled }) => (isDisabled ? 0.6 : 1)};
 
   &:hover {
-    background: ${({ theme, isDisabled }) => !isDisabled && theme.bg4};
-    border-color: ${({ theme, isDisabled }) => !isDisabled && theme.primary1};
+    background-color: ${({ isDisabled }) => !isDisabled && 'rgba(243, 132, 30, 0.1)'};
   }
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -45,7 +44,7 @@ const DropdownMenu = styled.div<{ isOpen: boolean }>`
   right: 0;
   margin-top: 8px;
   background: ${({ theme }) => theme.bg1};
-  border: 1px solid ${({ theme }) => theme.bg3};
+  border: 1px solid rgba(243, 132, 30, 0.2);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -57,8 +56,8 @@ const NetworkOption = styled.button<{ isActive: boolean }>`
   width: 100%;
   padding: 12px 16px;
   border: none;
-  background: ${({ isActive, theme }) => (isActive ? theme.bg3 : 'transparent')};
-  color: ${({ theme }) => theme.text1};
+  background: ${({ isActive }) => (isActive ? 'rgba(243, 132, 30, 0.1)' : 'transparent')};
+  color: ${({ isActive, theme }) => (isActive ? theme.yellow2 : theme.text1)};
   text-align: left;
   cursor: pointer;
   font-size: 14px;
@@ -66,7 +65,8 @@ const NetworkOption = styled.button<{ isActive: boolean }>`
   transition: background 0.2s ease;
 
   &:hover {
-    background: ${({ theme }) => theme.bg2};
+    background: rgba(243, 132, 30, 0.05);
+    color: ${({ theme }) => theme.yellow2};
   }
 
   &:first-child {
@@ -109,9 +109,7 @@ const NETWORK_INFO: { [chainId in ChainId]?: { name: string; color?: string } } 
   [ChainId.JAPAN_OPEN_CHAIN]: { name: 'Japan Open Chain', color: '#F7931A' },
   [ChainId.BASE]: { name: 'Base', color: '#0052FF' },
   [ChainId.AVALANCHE]: { name: 'Avalanche', color: '#E84142' },
-  [ChainId.ARBITRUM_ONE]: { name: 'Arbitrum One', color: '#28A0F0' },
-  [ChainId.SEPOLIA]: { name: 'Sepolia Testnet', color: '#FFC430' },
-  [ChainId.JAPAN_OPEN_CHAIN_TESTNET]: { name: 'JOC Testnet', color: '#F7931A' }
+  [ChainId.ARBITRUM_ONE]: { name: 'Arbitrum One', color: '#28A0F0' }
 }
 
 // Supported networks for switching
@@ -120,9 +118,7 @@ const SUPPORTED_NETWORKS = [
   ChainId.JAPAN_OPEN_CHAIN,
   ChainId.BASE,
   ChainId.AVALANCHE,
-  ChainId.ARBITRUM_ONE,
-  ChainId.SEPOLIA,
-  ChainId.JAPAN_OPEN_CHAIN_TESTNET
+  ChainId.ARBITRUM_ONE
 ]
 
 export default function NetworkSwitcher() {
