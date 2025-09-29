@@ -57,13 +57,15 @@ class MiniRpcProvider implements AsyncSendable {
     this.batchTimeoutId = null
     let response: Response
     try {
+      console.debug(`Sending RPC request to ${this.url}`, batch.map(item => item.request))
       response = await fetch(this.url, {
         method: 'POST',
         headers: { 'content-type': 'application/json', accept: 'application/json' },
         body: JSON.stringify(batch.map(item => item.request))
       })
     } catch (error) {
-      batch.forEach(({ reject }) => reject(new Error('Failed to send batch call')))
+      console.error(`Failed to connect to RPC endpoint ${this.url}:`, error)
+      batch.forEach(({ reject }) => reject(new Error(`Failed to connect to RPC endpoint ${this.url}: ${error}`)))
       return
     }
 

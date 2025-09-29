@@ -1,11 +1,11 @@
 {
   "name": "@x-gate-project/x-swap",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "X-Swap UI",
   "homepage": ".",
   "private": true,
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "devDependencies": {
     "@ethersproject/experimental": "^5.0.1",

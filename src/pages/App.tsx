@@ -8,6 +8,7 @@ import URLWarning from '../components/Header/URLWarning'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
+import About from './About'
 import AddLiquidity from './AddLiquidity'
 import { RedirectDuplicateTokenIds, RedirectOldAddLiquidityPathStructure } from './AddLiquidity/redirects'
 import Pool from './Pool'
@@ -68,6 +69,7 @@ export default function App() {
           <Polling />
           <Web3ReactManager>
             <Switch>
+              <Route exact strict path="/about" component={About} />
               <Route exact strict path="/swap" component={Swap} />
               <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
               <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
@@ -78,6 +80,7 @@ export default function App() {
               <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
               <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
               <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
+              <Route exact strict path="/" component={RedirectPathToSwapOnly} />
               <Route component={RedirectPathToSwapOnly} />
             </Switch>
           </Web3ReactManager>
