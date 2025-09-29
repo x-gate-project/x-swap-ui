@@ -1,5 +1,5 @@
 import { ChainId } from '../../libs/x-swap-sdk'
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
 import { darken } from 'polished'
@@ -236,14 +236,108 @@ const StyledExternalLink = styled(ExternalLink).attrs({
 `}
 `
 
+const StakingDropdown = styled.div`
+  position: relative;
+  display: inline-block;
+  margin: 0 12px;
+`
+
+const StakingMenuButton = styled.span`
+  ${({ theme }) => theme.flexRowNoWrap}
+  align-items: center;
+  border-radius: 3rem;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: ${({ theme }) => theme.text2};
+  font-size: 1rem;
+  font-weight: 500;
+
+  :hover {
+    color: ${({ theme }) => darken(0.1, theme.text1)};
+  }
+`
+
+const DropdownContent = styled.div<{ isOpen: boolean }>`
+  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  position: absolute;
+  background-color: ${({ theme }) => theme.bg2};
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  z-index: 10;
+  margin-top: 10px;
+
+  a {
+    color: ${({ theme }) => theme.text2};
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 12px;
+
+    :hover {
+      background-color: ${({ theme }) => theme.bg3};
+      color: ${({ theme }) => theme.text1};
+    }
+  }
+`
+
 
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
   const { t } = useTranslation()
+  const [isStakingOpen, setIsStakingOpen] = useState(false)
+  const [isStakingClicked, setIsStakingClicked] = useState(false)
+  const stakingRef = useRef<HTMLDivElement>(null)
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   // const [isDark] = useDarkModeManager()
   const nativeSymbol = useNativeSymbol()
+
+  // Handle hover with delay
+  const handleMouseEnter = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current)
+    }
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsStakingOpen(true)
+    }, 200) // 200ms delay to prevent accidental hover
+  }
+
+  const handleMouseLeave = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current)
+    }
+    if (!isStakingClicked) {
+      hoverTimeoutRef.current = setTimeout(() => {
+        setIsStakingOpen(false)
+      }, 300) // 300ms delay before closing
+    }
+  }
+
+  // Handle click
+  const handleClick = () => {
+    setIsStakingClicked(!isStakingClicked)
+    setIsStakingOpen(true)
+  }
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (stakingRef.current && !stakingRef.current.contains(event.target as Node)) {
+        setIsStakingOpen(false)
+        setIsStakingClicked(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   return (
     <HeaderFrame>
@@ -273,9 +367,20 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledLink href={'https://staker.x-swap.org/'} target="_blank">
-            Staking
-          </StyledLink>
+          <StakingDropdown
+            ref={stakingRef}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <StakingMenuButton onClick={handleClick}>
+              Staking
+            </StakingMenuButton>
+            <DropdownContent isOpen={isStakingOpen}>
+              <a href="https://staker.x-swap.org/" target="_blank" rel="noopener noreferrer">
+                JOCX
+              </a>
+            </DropdownContent>
+          </StakingDropdown>
           <StyledLink href={'https://docs.x-gate.org/'} target="_blank">
             Help
           </StyledLink>
