@@ -20,7 +20,16 @@ import TradePrice from '../../components/swap/TradePrice'
 import TokenWarningModal from '../../components/TokenWarningModal'
 import ProgressSteps from '../../components/ProgressSteps'
 
-import { BETTER_TRADE_LINK_THRESHOLD, INITIAL_ALLOWED_SLIPPAGE, USDTX_JOC, USDTX_JOCT } from '../../constants'
+import {
+  BETTER_TRADE_LINK_THRESHOLD,
+  INITIAL_ALLOWED_SLIPPAGE,
+  JOCX_ARB,
+  JOCX_AVAX,
+  JOCX_BASE,
+  JOCX_MAINNET,
+  USDTX_JOC,
+  USDTX_JOCT
+} from '../../constants'
 import { getTradeVersion, isTradeBetter } from '../../data/V1'
 import { useActiveWeb3React } from '../../hooks'
 import { useCurrency } from '../../hooks/Tokens'
@@ -268,7 +277,11 @@ export default function Swap() {
     return urlLoadedTokens.find(
       token =>
         (token.address === USDTX_JOC.address && token.chainId === USDTX_JOC.chainId) ||
-        (token.address === USDTX_JOCT.address && token.chainId === USDTX_JOCT.chainId)
+        (token.address === USDTX_JOCT.address && token.chainId === USDTX_JOCT.chainId) ||
+        (token.address === JOCX_BASE.address && token.chainId === JOCX_BASE.chainId) ||
+        (token.address === JOCX_ARB.address && token.chainId === JOCX_ARB.chainId) ||
+        (token.address === JOCX_AVAX.address && token.chainId === JOCX_AVAX.chainId) ||
+        (token.address === JOCX_MAINNET.address && token.chainId === JOCX_MAINNET.chainId)
     )
   }, [urlLoadedTokens])
   return (

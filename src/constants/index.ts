@@ -63,6 +63,54 @@ export const USDCX_JOCT = new WrappedTokenInfo(
   []
 )
 
+export const JOCX_MAINNET = new WrappedTokenInfo(
+  {
+    chainId: ChainId.MAINNET,
+    address: '0xbb1e1399eee1f577f1b4359224155f5db39ca084',
+    decimals: 18,
+    name: 'JOCX',
+    symbol: 'JOCX',
+    logoURI: 'https://raw.githubusercontent.com/x-gate-project/x-gate-token-list/main/assets/1_jocx.svg'
+  },
+  []
+)
+
+export const JOCX_BASE = new WrappedTokenInfo(
+  {
+    chainId: ChainId.BASE,
+    address: '0xbb1e1399eee1f577f1b4359224155f5db39ca084',
+    decimals: 18,
+    name: 'JOCX',
+    symbol: 'JOCX',
+    logoURI: 'https://raw.githubusercontent.com/x-gate-project/x-gate-token-list/main/assets/8453_jocx.svg'
+  },
+  []
+)
+
+export const JOCX_ARB = new WrappedTokenInfo(
+  {
+    chainId: ChainId.ARBITRUM_ONE,
+    address: '0xbb1e1399eee1f577f1b4359224155f5db39ca084',
+    decimals: 18,
+    name: 'JOCX',
+    symbol: 'JOCX',
+    logoURI: 'https://raw.githubusercontent.com/x-gate-project/x-gate-token-list/main/assets/42161_jocx.svg'
+  },
+  []
+)
+
+export const JOCX_AVAX = new WrappedTokenInfo(
+  {
+    chainId: ChainId.AVALANCHE,
+    address: '0xbb1e1399eee1f577f1b4359224155f5db39ca084',
+    decimals: 18,
+    name: 'JOCX',
+    symbol: 'JOCX',
+    logoURI: 'https://raw.githubusercontent.com/x-gate-project/x-gate-token-list/main/assets/43114_jocx.svg'
+  },
+  []
+)
+
 // Block time here is slightly higher (~1s) than average in order to avoid ongoing proposals past the displayed time
 export const AVERAGE_BLOCK_TIME_IN_SECS = 14
 export const PROPOSAL_LENGTH_IN_BLOCKS = 40_320

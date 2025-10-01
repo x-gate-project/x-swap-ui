@@ -18,7 +18,7 @@ import { SwapState } from './reducer'
 import useToggledVersion from '../../hooks/useToggledVersion'
 import { useUserSlippageTolerance } from '../user/hooks'
 import { computeSlippageAdjustedAmounts } from '../../utils/prices'
-import { USDTX_JOC, USDTX_JOCT } from '../../constants'
+import { JOCX_ARB, JOCX_AVAX, JOCX_BASE, JOCX_MAINNET, USDTX_JOC, USDTX_JOCT } from '../../constants'
 export function useSwapState(): AppState['swap'] {
   return useSelector<AppState, AppState['swap']>(state => state.swap)
 }
@@ -290,13 +290,19 @@ export function useDefaultsFromURLSearch():
         const valid = isAddress(urlParam)
         if (valid) return valid
         if (urlParam.toUpperCase() === 'ETH') return 'ETH'
-        if (valid === false) return 'ETH'
+        if (valid === false) return JOCX_MAINNET.address
       } else if (chainId === USDTX_JOC.chainId) {
         return USDTX_JOC.address
       } else if (chainId === USDTX_JOCT.chainId) {
         return USDTX_JOCT.address
+      } else if (chainId === JOCX_BASE.chainId) {
+        return JOCX_BASE.address
+      } else if (chainId === JOCX_ARB.chainId) {
+        return JOCX_ARB.address
+      } else if (chainId === JOCX_AVAX.chainId) {
+        return JOCX_AVAX.address
       }
-      return 'ETH'
+      return JOCX_MAINNET.address
     },
     [chainId]
   )
