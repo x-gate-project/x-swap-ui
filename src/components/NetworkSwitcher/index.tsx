@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { ChainId } from '../../libs/x-swap-sdk'
 import { useActiveWeb3React } from '../../hooks'
+import { useWindowSize } from '../../hooks/useWindowSize'
+import { MEDIA_WIDTHS } from '../../theme'
 import { ChevronDown, Loader } from 'react-feather'
 
 const NetworkSwitcherContainer = styled.div`
@@ -50,6 +52,14 @@ const DropdownMenu = styled.div<{ isOpen: boolean }>`
   z-index: 1000;
   min-width: 200px;
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    right: -46px;
+  `};
+
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+    top: -14rem;
+  `};
 `
 
 const NetworkOption = styled.button<{ isActive: boolean }>`
@@ -104,12 +114,19 @@ const LoadingSpinner = styled(Loader)`
   }
 `
 
-const NETWORK_INFO: { [chainId in ChainId]?: { name: string; color?: string } } = {
-  [ChainId.MAINNET]: { name: 'Ethereum Mainnet', color: '#627EEA' },
-  [ChainId.JAPAN_OPEN_CHAIN]: { name: 'Japan Open Chain', color: '#F7931A' },
-  [ChainId.BASE]: { name: 'Base', color: '#0052FF' },
-  [ChainId.AVALANCHE]: { name: 'Avalanche', color: '#E84142' },
-  [ChainId.ARBITRUM_ONE]: { name: 'Arbitrum One', color: '#28A0F0' }
+const NetworkIconImage = styled.img`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+`
+
+const NETWORK_INFO: { [chainId in ChainId]?: { name: string; color?: string; icon?: string } } = {
+  [ChainId.MAINNET]: { name: 'Ethereum Mainnet', color: '#627EEA', icon: '/images/ethereum.svg' },
+  [ChainId.JAPAN_OPEN_CHAIN]: { name: 'Japan Open Chain', color: '#F7931A', icon: '/images/japan-open-chain.svg' },
+  [ChainId.BASE]: { name: 'Base', color: '#0052FF', icon: '/images/base.svg' },
+  [ChainId.AVALANCHE]: { name: 'Avalanche', color: '#E84142', icon: '/images/avax.svg' },
+  [ChainId.ARBITRUM_ONE]: { name: 'Arbitrum One', color: '#28A0F0', icon: '/images/arbitrum.svg' }
 }
 
 // Supported networks for switching
@@ -123,11 +140,14 @@ const SUPPORTED_NETWORKS = [
 
 export default function NetworkSwitcher() {
   const { chainId, library, activate, deactivate } = useActiveWeb3React()
+  const { width } = useWindowSize()
   const [isOpen, setIsOpen] = useState(false)
   const [detectedChainId, setDetectedChainId] = useState<ChainId | undefined>(chainId)
   const [isSwitching, setIsSwitching] = useState(false)
   const [isInitialized, setIsInitialized] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  const isSmallScreen = width ? width <= MEDIA_WIDTHS.upToSmall : false
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -331,7 +351,19 @@ export default function NetworkSwitcher() {
     }
   }
 
+  const getCurrentNetworkIconPath = () => {
+    if (isSwitching) return ''
+    if (!isInitialized) return ''
+    if (!detectedChainId) return ''
+
+    const networkInfo = NETWORK_INFO[detectedChainId]
+    if (networkInfo) return networkInfo.icon
+
+    return undefined
+  }
+
   const currentNetworkName = getCurrentNetworkName()
+  const currentNetworkIconPath = getCurrentNetworkIconPath()
 
   return (
     <NetworkSwitcherContainer ref={containerRef}>
@@ -341,12 +373,15 @@ export default function NetworkSwitcher() {
         onClick={() => !isSwitching && setIsOpen(!isOpen)}
         title={currentNetworkName}
       >
-        {currentNetworkName}
+        {isSmallScreen && currentNetworkIconPath && (
+          <NetworkIconImage src={currentNetworkIconPath} alt={currentNetworkName} />
+        )}
+        {!isSmallScreen && currentNetworkName}
         {isSwitching && isInitialized ? <LoadingSpinner /> : <ChevronIcon isOpen={isOpen} />}
       </NetworkButton>
 
       <DropdownMenu isOpen={isOpen}>
-        {SUPPORTED_NETWORKS.map((supportedChainId) => (
+        {SUPPORTED_NETWORKS.map(supportedChainId => (
           <NetworkOption
             key={supportedChainId}
             isActive={detectedChainId === supportedChainId}
