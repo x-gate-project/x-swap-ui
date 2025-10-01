@@ -391,9 +391,7 @@ export default function Header() {
       </HeaderRow>
       <HeaderControls>
         <HeaderElement>
-          <HideSmall>
-            <NetworkSwitcher />
-          </HideSmall>
+          <NetworkSwitcher />
 
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
