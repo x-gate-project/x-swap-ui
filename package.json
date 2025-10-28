@@ -97,6 +97,8 @@
   },
   "scripts": {
     "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "dev:backend": "node server.js",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run start\"",
     "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "NODE_OPTIONS=--openssl-legacy-provider react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -122,6 +124,10 @@
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@uniswap/token-lists": "^1.0.0-beta.34"
+    "@uniswap/token-lists": "^1.0.0-beta.34",
+    "body-parser": "^2.2.0",
+    "concurrently": "^9.2.1",
+    "express": "^5.1.0",
+    "serverless-http": "^4.0.0"
   }
 }
