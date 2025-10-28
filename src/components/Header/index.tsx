@@ -14,6 +14,7 @@ import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances, useNativeSymbol } from '../../state/wallet/hooks'
 
 import { ExternalLink } from '../../theme'
+import { HelpCircle } from 'react-feather'
 
 import Settings from '../Settings'
 import NetworkSwitcher from '../NetworkSwitcher'
@@ -120,7 +121,6 @@ const HideSmall = styled.span`
     display: none;
   `};
 `
-
 
 const BalanceText = styled(Text)`
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
@@ -263,7 +263,7 @@ const DropdownContent = styled.div<{ isOpen: boolean }>`
   position: absolute;
   background-color: ${({ theme }) => theme.bg2};
   min-width: 120px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   z-index: 10;
   margin-top: 10px;
@@ -283,7 +283,6 @@ const DropdownContent = styled.div<{ isOpen: boolean }>`
     }
   }
 `
-
 
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
@@ -354,6 +353,9 @@ export default function Header() {
           <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
             {t('swap')}
           </StyledNavLink>
+          <StyledNavLink id={`buy-nav-link`} to={'/buy'}>
+            {t('buy')}
+          </StyledNavLink>
           <StyledNavLink
             id={`pool-nav-link`}
             to={'/pool'}
@@ -367,23 +369,14 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
-          <StakingDropdown
-            ref={stakingRef}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <StakingMenuButton onClick={handleClick}>
-              Staking
-            </StakingMenuButton>
+          <StakingDropdown ref={stakingRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <StakingMenuButton onClick={handleClick}>Staking</StakingMenuButton>
             <DropdownContent isOpen={isStakingOpen}>
               <a href="https://staker.x-swap.org/" target="_blank" rel="noopener noreferrer">
                 JOCX
               </a>
             </DropdownContent>
           </StakingDropdown>
-          <StyledLink href={'https://docs.x-gate.org/'} target="_blank">
-            Help
-          </StyledLink>
           {/* <StyledExternalLink id={`stake-nav-link`} href={'#'}>
             Charts <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink> */}
@@ -405,6 +398,9 @@ export default function Header() {
           </AccountElement>
         </HeaderElement>
         <HeaderElementWrap>
+          <StyledLink href={'https://docs.x-gate.org/'} target="_blank" aria-label="Help">
+            <HelpCircle size={18} />
+          </StyledLink>
           <Settings />
         </HeaderElementWrap>
       </HeaderControls>
